@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: b5970a208514aa945ab7ced2decf6df0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - ZicletsW00
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5d651483bf8ba86488087f41ea50ae54, type: 3}
+  - {fileID: 12800000, guid: a005e2e4254a6e74ca0da03e92da6e8e, type: 3}
+  - {fileID: 12800000, guid: 0d8cbccf167765348ae4c03960ccdb05, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

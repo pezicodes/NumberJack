@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 7c8c346d19def354a986bff5bc36431d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Airy
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6945ad654e26658468ae986a804a9a9b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
