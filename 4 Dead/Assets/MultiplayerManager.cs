@@ -14,8 +14,6 @@ public class MultiplayerManager : MonoBehaviour
     public CanvasGroup PlayButton;
     List<string> Results = new List<string>();
     List<string> OppNum = new List<string>();
-    List<string> hammerchoices = new List<string>();
-    List<string> scannerchoices = new List<string>();
     List<string> returned = new List<string>();
 
     char first_opp, second_opp, third_opp, fourth_opp;
@@ -58,16 +56,10 @@ public class MultiplayerManager : MonoBehaviour
         woundedresults.text = "";
 
         ColorUtility.TryParseHtmlString
-        ("#A5C87C", out greenColor);
+        ("#9DD300", out greenColor);
 
         ColorUtility.TryParseHtmlString
         ("#94C5D3", out defaultColor);
-
-        ColorUtility.TryParseHtmlString
-        ("#E7666B", out redColor);
-
-        ColorUtility.TryParseHtmlString
-        ("#EF90BA", out hammercolor);
     
         myEntries = Mytextbox.text;
         myEntries.ToArray();
@@ -96,19 +88,6 @@ public class MultiplayerManager : MonoBehaviour
         #endregion
 
         generateNumber();
-
-        
-        hammerupdate();
-        Hammerin.SetActive(false);
-        Hammerout.SetActive(false);
-
-        scanupdate();
-        Scanin.SetActive(false);
-        Scanout.SetActive(false);
-    
-        bombupdate();
-        Bombin.SetActive(false);
-        Bombout.SetActive(false);
     }
 
     public void UseOnce(){
@@ -437,15 +416,7 @@ public class MultiplayerManager : MonoBehaviour
     //public Text[] texts;
     public Color greenColor;
     public Color defaultColor;  
-    public Color redColor;  
-
-    public Color hammercolor; 
-
-    public Color practice; 
-    public Color practicewounded; 
-
     
-
     public void reset(){
 
         clear.codeClear.cleraAll();
