@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine;           
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.SceneManagement;
@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class MultiplayerManager : MonoBehaviour
 {
     #region Main Game Play Variables 
-    //public static gamemanager codeSend;
+    public static MultiplayerManager multiPlay;
 
     public PracticeTimer timerscript;
     public CanvasGroup PlayButton;
@@ -39,15 +39,13 @@ public class MultiplayerManager : MonoBehaviour
 
     public GameObject GAMEPLAY, VICTORY, FAILED;
 
-    public GameObject[] PowerUps_Holder;
-
     
     #endregion
 
     #region GameManager's Methods
     public void Start()
      {
-       // codeSend = this;
+        multiPlay = this;
         timerscript.enabled = true;
         trialresults.text = "";
 
@@ -240,10 +238,7 @@ public class MultiplayerManager : MonoBehaviour
         }
             
         Opptextbox.ToArray();
-        for (int j = 0; j < Opptextbox.Count(); j++){   
-            hammerchoices.Add(Opptextbox[j].ToString());
-            scannerchoices.Add(Opptextbox[j].ToString());
-        }    
+        
         
         winscreenText();
         //losescreenText();
