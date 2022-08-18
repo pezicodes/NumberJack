@@ -88,15 +88,7 @@ public class MultiplayerManager : MonoBehaviour
         generateNumber();
     }
 
-    public void UseOnce(){
-        for (int i = 0; i < 1; i++){
-            PowerUps_Holder[i].SetActive(true);
-            PowerUps_Holder[i+1].SetActive(false);
-        } 
-        //lazy, dumb codeeeeeeeeeee
-        //This was very lazy of you bro, 
-        //you're a mumu for writing this abomination
-    }
+
  
     public void Restart()
     {

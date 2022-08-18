@@ -575,7 +575,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 
 --- !u!222 &64992774
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8188,7 +8188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 4
+  m_Text: 
 --- !u!222 &374688540
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9540,7 +9540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerscript: {fileID: 0}
   PlayButton: {fileID: 0}
-  Mytextbox: {fileID: 0}
+  Mytextbox: {fileID: 344539668}
   trialresults: {fileID: 0}
   deadresults: {fileID: 0}
   woundedresults: {fileID: 0}
@@ -9550,8 +9550,11 @@ MonoBehaviour:
   GAMEPLAY: {fileID: 0}
   VICTORY: {fileID: 0}
   FAILED: {fileID: 0}
-  PowerUps_Holder: []
-  buttons: []
+  buttons:
+  - {fileID: 503906904}
+  - {fileID: 2006767753}
+  - {fileID: 1323882397}
+  - {fileID: 884896661}
   greenColor: {r: 0.6156863, g: 0.82745105, b: 0, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   winText: []
@@ -9624,7 +9627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6156863, g: 0.82745105, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11344,7 +11347,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 614558850}
   m_Enabled: 1
-  m_Alpha: 0.05
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -18045,7 +18048,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 
 --- !u!222 &813242340
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18592,7 +18595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6156863, g: 0.82745105, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20854,7 +20857,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030952279}
   m_Enabled: 1
-  m_Alpha: 0.05
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -23462,7 +23465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6156863, g: 0.82745105, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -30381,7 +30384,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561152379}
   m_Enabled: 1
-  m_Alpha: 0.05
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -31450,7 +31453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.006551573, y: 1237.2275}
+  m_AnchoredPosition: {x: -0.006551573, y: 0.0019339415}
   m_SizeDelta: {x: 0, y: 8625.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1676832057
@@ -32098,8 +32101,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 519398893}
   m_HandleRect: {fileID: 519398892}
   m_Direction: 2
-  m_Value: 0.82365274
-  m_Size: 0.18656068
+  m_Value: 1.0000008
+  m_Size: 0.18655999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -33266,7 +33269,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915016847}
   m_Enabled: 1
-  m_Alpha: 0.05
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -34167,7 +34170,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2
+  m_Text: 
 --- !u!222 &1992486239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34325,7 +34328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6156863, g: 0.82745105, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
