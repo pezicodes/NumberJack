@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/4 Dead Assets/Scenes/QuickJack.unity
     guid: abff5834b697cd246bd726ce60f9f6a0
-  - enabled: 1
-    path: Assets/4 Dead Assets/Scenes/dumMulti.unity
-    guid: db7c24d63014f3449adb470a1309e814
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
