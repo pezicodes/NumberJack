@@ -66,7 +66,7 @@ public class MultiplayerManager : MonoBehaviour
         ("#9DD300", out greenColor);
 
         ColorUtility.TryParseHtmlString
-        ("#94C5D3", out defaultColor);
+        ("#FFFFFF", out defaultColor);
     
         myEntries = Mytextbox.text;
         myEntries.ToArray();
