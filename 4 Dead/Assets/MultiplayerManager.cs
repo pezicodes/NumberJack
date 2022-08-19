@@ -24,16 +24,17 @@ public class MultiplayerManager : MonoBehaviour
     string OppEntries;
     string result;
     string Opptextbox;
-    public Text trialresults, deadresults, woundedresults;
+    //public Text[] trialresults, deadresults, woundedresults;
 
-
+    public GameObject rowPrefab;
+    public Transform rowParent;
     //movescounters
     int moveCounter;
     public Text moveCount;
-    public Text winpractice_moves;
+   // public Text winpractice_moves;
 
     //time counters
-    public Text winpractice_time;
+    //public Text winpractice_time;
 
     int D, W;
 
@@ -44,14 +45,22 @@ public class MultiplayerManager : MonoBehaviour
 
     #region GameManager's Methods
     public void Start()
-     {
+    {
+        PlayerPrefs.SetInt("Dead", 0); //clear dead count - restarting game 
         multiPlay = this;
         timerscript.enabled = true;
-        trialresults.text = "";
 
-        deadresults.text = "";
+        print(moveCounter);
+        moveCount.text = "Moves: " + moveCounter.ToString();
 
-        woundedresults.text = "";
+        if(!(rowParent.childCount <= 0)){
+            {
+                Destroy(gameObject);
+            }
+        }
+        
+    
+        
 
         ColorUtility.TryParseHtmlString
         ("#9DD300", out greenColor);
@@ -188,21 +197,18 @@ public class MultiplayerManager : MonoBehaviour
             }
         }
         
-       
-        
+        //trialresults[moveCounter-1].text = myEntries;
+        //deadresults[moveCounter-1].text = D.ToString();
+        //woundedresults[moveCounter-1].text = W.ToString();
+   
+        GameObject Guess = Instantiate(rowPrefab, rowParent);
+        Text[] texts = Guess.GetComponentsInChildren<Text>();
+        texts[0].text = myEntries;
+        texts[1].text = D.ToString() + "d";
+        texts[2].text = W.ToString() + "w";
 
-        if(trialresults.text == ""){
-            trialresults.text = myEntries;
-            deadresults.text = D.ToString();
-            woundedresults.text = W.ToString();
-        }
-
-        else{
-
-            trialresults.text = trialresults.text + "\n" + myEntries;
-            deadresults.text = deadresults.text + "\n" + D;
-            woundedresults.text = woundedresults.text + "\n" + W;
-        }
+        PlayerPrefs.SetInt("Dead", D);
+           
         //losescreenText();
         
         clear.codeClear.cleraAll();
@@ -264,21 +270,21 @@ public class MultiplayerManager : MonoBehaviour
  
     private void Update()
     {   
-        #region Time Formatting
-        if((int)timerscript.secondsCount < 10){
-            timerText.text = 
-        (timerscript.minuteCount +":"+"0"+(int)timerscript.secondsCount).ToString();
-        }
+        // #region Time Formatting
+        // if((int)timerscript.secondsCount < 10){
+        //     timerText.text = 
+        // (timerscript.minuteCount +":"+"0"+(int)timerscript.secondsCount).ToString();
+        // }
 
-        else{
-            timerText.text = 
-        (timerscript.minuteCount +":"+ (int)timerscript.secondsCount)
-        .ToString(); 
-        }
-        #endregion
+        // else{
+        //     timerText.text = 
+        // (timerscript.minuteCount +":"+ (int)timerscript.secondsCount)
+        // .ToString(); 
+        // }
+        // #endregion
         // timerText.text = (timerscript.minuteCount +":"+ (int)timerscript.secondsCount).ToString();
 
-
+        moveCount.text = "Moves: " + moveCounter.ToString();
         #region Check input before play
         if (Mytextbox.text.Length > 3)
         {
@@ -291,79 +297,22 @@ public class MultiplayerManager : MonoBehaviour
 
         #endregion
 
-        //Win
-        if (deadresults.text.Contains("4"))
-        {
-
-            FastestPlayMoveTimer();
-            
-            winpractice_moves.text = moveCounter.ToString();
-            winpractice_time.text = timerText.text;
-            Invoke("Win", 1f);
-            
-            
-        }
-    }
-
-    void FastestPlayMoveTimer(){
-        
-        #region Live Time
-        string livetemp = timerText.text;
-        string[] livetime = livetemp.Split(':');  
-        string livemin = livetime[0];
-        string livesec = livetime[1];
-
-        int liveminutes = int.Parse(livemin);
-        int liveseconds = int.Parse(livesec);
-
-        int livetotaltime = liveseconds + (liveminutes * 60);
-        //print(livetotaltime);
-        #endregion
-        
-        #region Saved Time
-        string savedtemp = PlayerPrefs.GetString("PracticeTime");
-        string[] savedtime = savedtemp.Split(':');  
-        string savedmin = savedtime[0];
-        string savedsec = savedtime[1];
-
-        int savedminutes = int.Parse(savedmin);
-        int savedseconds = int.Parse(savedsec);
-
-        int savedtotaltime = savedseconds + (savedminutes * 60);
-        //print(savedtotaltime);
-
-        #endregion
-
-        
-        timerscript.enabled = false;
-        int temp = int.Parse(PlayerPrefs.GetString("PracticeMoves"));
-           
-        if(temp == 0){
-            PlayerPrefs.SetString("PracticeMoves", moveCounter.ToString());
-            PlayerPrefs.SetString("PracticeTime", timerText.text);
-        }
-
-        else{
-            if(temp > moveCounter && livetotaltime  < savedtotaltime){
-                PlayerPrefs.SetString("PracticeMoves", moveCounter.ToString());
-                PlayerPrefs.SetString("PracticeTime", timerText.text);   
-            }
-
-            else{
-                PlayerPrefs.SetString("PracticeMoves", temp.ToString());
-                    
-            }
-        }
-
-    }
-
     
+        //Win
+        if (PlayerPrefs.GetInt("Dead") == 4)
+        {
+            Invoke("Win", 1f);                  
+        }
+        
+    }
+
+
     public void Send_Play()
     {   //SlideEntry.SE.checkifempty();
 
         moveCounter++;
         
-        moveCount.text = moveCounter.ToString();
+        moveCount.text = "Moves: " + moveCounter.ToString();
 
         //PlayerPrefs.SetString("PracticeMoves", moveCount.text);
         //PlayerPrefs.SetString("PracticeTime", timerText.text);
@@ -488,7 +437,7 @@ public class MultiplayerManager : MonoBehaviour
 
     // #endregion
 
-     public Text timerText;
+    //public Text timerText;
      
 
 }
