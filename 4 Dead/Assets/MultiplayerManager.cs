@@ -24,7 +24,7 @@ public class MultiplayerManager : MonoBehaviour
     string OppEntries;
     string result;
     string Opptextbox;
-    //public Text[] trialresults, deadresults, woundedresults;
+    public Text[] trialresults, deadresults, woundedresults;
 
     public GameObject rowPrefab;
     public Transform rowParent;
