@@ -342,7 +342,6 @@ public class MultiplayerManager : MonoBehaviour
         } 
           
     }
-
     
     public void decipher(){
         //pezicodes 
@@ -417,5 +416,4 @@ public class MultiplayerManager : MonoBehaviour
 
     //public Text timerText;
      
-
 }
