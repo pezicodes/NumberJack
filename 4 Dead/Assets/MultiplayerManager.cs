@@ -89,8 +89,6 @@ public class MultiplayerManager : MonoBehaviour
         generateNumber();
     }
 
-
- 
     public void Restart()
     {
        
