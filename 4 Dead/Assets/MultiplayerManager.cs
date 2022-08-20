@@ -277,7 +277,6 @@ public class MultiplayerManager : MonoBehaviour
 
         #endregion
 
-    
         //Win
         if (PlayerPrefs.GetInt("Dead") == 4)
         {
@@ -288,8 +287,7 @@ public class MultiplayerManager : MonoBehaviour
 
 
     public void Send_Play()
-    {   //SlideEntry.SE.checkifempty();
-
+    {   
         moveCounter++;
         
         moveCount.text = "Moves: " + moveCounter.ToString();
