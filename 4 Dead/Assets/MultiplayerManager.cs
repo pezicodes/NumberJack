@@ -53,9 +53,6 @@ public class MultiplayerManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
-    
-        
 
         ColorUtility.TryParseHtmlString
         ("#9DD300", out greenColor);
