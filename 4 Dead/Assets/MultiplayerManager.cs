@@ -24,17 +24,12 @@ public class MultiplayerManager : MonoBehaviour
     string OppEntries;
     string result;
     string Opptextbox;
-    public Text[] trialresults, deadresults, woundedresults;
-
+    
     public GameObject rowPrefab;
     public Transform rowParent;
     //movescounters
     int moveCounter;
     public Text moveCount;
-   // public Text winpractice_moves;
-
-    //time counters
-    //public Text winpractice_time;
 
     int D, W;
 
