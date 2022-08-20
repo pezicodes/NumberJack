@@ -186,10 +186,6 @@ public class MultiplayerManager : MonoBehaviour
                 W = W + 1;
             }
         }
-        
-        //trialresults[moveCounter-1].text = myEntries;
-        //deadresults[moveCounter-1].text = D.ToString();
-        //woundedresults[moveCounter-1].text = W.ToString();
    
         GameObject Guess = Instantiate(rowPrefab, rowParent);
         Text[] texts = Guess.GetComponentsInChildren<Text>();
@@ -203,7 +199,6 @@ public class MultiplayerManager : MonoBehaviour
         
         clear.codeClear.cleraAll();
         clearMemory();
-
     }
   
     public void generateNumber()
@@ -221,23 +216,18 @@ public class MultiplayerManager : MonoBehaviour
 
             print(Opptextbox);
 
-            
-            
         }
             
         Opptextbox.ToArray();
-        
-        
+               
         winscreenText();
         //losescreenText();
-
 
     }
 
     public void clearMemory()
     {
         result = "";
-        //displayResult.text = "";
         Results.Clear();
         reset();
 
