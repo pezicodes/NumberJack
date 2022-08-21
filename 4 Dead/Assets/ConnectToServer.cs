@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class ConnectToServer : MonoBehaviourPunCallbacks
 {
 
-    public InputField nameInputFied;
+    //public InputField nameInputFied;
 	public Text buttonText;
 
     public GameObject Lobby;
@@ -22,7 +22,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 	// Get's called when we click on connect button: set nickname to what we put in input field and connects to Photon Server
 	public void OnClickConnectButton()
 	{
-		PhotonNetwork.NickName = nameInputFied.text;
+		PhotonNetwork.NickName = PlayerPrefs.GetString("UserName");
 		PhotonNetwork.ConnectUsingSettings();
 		buttonText.text = "Connecting...";
 	}
