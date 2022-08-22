@@ -17,8 +17,6 @@ public class MenuManager : MonoBehaviour
     public GameObject practicemenu, _MainMenu, _GameModesHolder, Dialog_box, 
     Buttons, Multimenu, LoadingScreen, CreateRoom, JoinRoom;
 
-
-
     public GameObject[] MenuScreens;
 
     [Space]
