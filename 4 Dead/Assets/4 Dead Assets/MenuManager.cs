@@ -36,7 +36,6 @@ public class MenuManager : MonoBehaviour
             playerGemsCount = PlayerPrefs.GetInt("PGEMS");
             playerGems.text = playerGemsCount.ToString();
 
-
         }
 
         else{
@@ -47,7 +46,6 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetInt("PGEMS", 0);
             playerGemsCount = PlayerPrefs.GetInt("PGEMS");
             playerGems.text = playerGemsCount.ToString();
-
         }
     }
 
@@ -72,7 +70,6 @@ public class MenuManager : MonoBehaviour
         practicemenu.SetActive(false);
         LoadingScreen.SetActive(false);
         
-        
     }
 
     void FastestPractice(){
@@ -94,10 +91,7 @@ public class MenuManager : MonoBehaviour
             PlayerPrefs.SetString("PracticeTime", "0:00");
         }
 
-        
     }
-
-    
 
     public void menuPlay()
     {
