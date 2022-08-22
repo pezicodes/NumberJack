@@ -26,8 +26,6 @@ public class MenuManager : MonoBehaviour
 
     public static MenuManager InstanceMenu;  
 
-
-
     void CoinGemUpdate(){
         if(PlayerPrefs.HasKey("PCOINS") && PlayerPrefs.HasKey("PGEMS")){
             playerCoinsCount = PlayerPrefs.GetInt("PCOINS");
@@ -35,7 +33,6 @@ public class MenuManager : MonoBehaviour
 
             playerGemsCount = PlayerPrefs.GetInt("PGEMS");
             playerGems.text = playerGemsCount.ToString();
-
         }
 
         else{
@@ -68,8 +65,7 @@ public class MenuManager : MonoBehaviour
         
         Multimenu.SetActive(false);
         practicemenu.SetActive(false);
-        LoadingScreen.SetActive(false);
-        
+        LoadingScreen.SetActive(false); 
     }
 
     void FastestPractice(){
