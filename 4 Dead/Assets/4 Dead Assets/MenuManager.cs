@@ -46,6 +46,15 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public int solution(int[] A) {
+        // write your code in C# 6.0 with .NET 4.5 (Mono)
+
+        return solution(A);
+
+        
+        
+    }
+
     void Start()
     {   
         PlayerPrefs.SetString("Username", "pezicodes");
