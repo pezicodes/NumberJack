@@ -366,7 +366,7 @@ public class MultiplayerManager : MonoBehaviour
     [Space]
     [Header("Win Screen Function")]
     public Text[] winText;
-    
+    //
     public void winscreenText(){
 
         myEntries = Opptextbox;
