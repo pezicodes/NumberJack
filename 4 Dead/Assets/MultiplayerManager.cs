@@ -348,8 +348,6 @@ public class MultiplayerManager : MonoBehaviour
         myEntries = Mytextbox.text;
         myEntries.ToArray();
 
-        //retryy
-
         for (int i = 0; i < myEntries.Length; i++)
         {
             buttons[i].image.color = greenColor;
