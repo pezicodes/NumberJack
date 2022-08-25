@@ -340,7 +340,6 @@ public class MultiplayerManager : MonoBehaviour
             Text btntext = buttons[i].GetComponentInChildren<Text>();
             btntext.text = "";
         } 
-          
     }
     
     public void decipher(){
