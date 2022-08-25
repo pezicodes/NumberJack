@@ -292,9 +292,6 @@ public class MultiplayerManager : MonoBehaviour
         
         moveCount.text = "Moves: " + moveCounter.ToString();
 
-        //PlayerPrefs.SetString("PracticeMoves", moveCount.text);
-        //PlayerPrefs.SetString("PracticeTime", timerText.text);
-
         #region Setting Entries
         myEntries = Mytextbox.text;
         myEntries.ToArray();
