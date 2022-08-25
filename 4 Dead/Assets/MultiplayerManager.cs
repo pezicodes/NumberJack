@@ -282,9 +282,7 @@ public class MultiplayerManager : MonoBehaviour
         {
             Invoke("Win", 1f);                  
         }
-        
     }
-
 
     public void Send_Play()
     {   
