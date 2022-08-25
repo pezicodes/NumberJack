@@ -249,21 +249,7 @@ public class MultiplayerManager : MonoBehaviour
     // }
  
     private void Update()
-    {   
-        // #region Time Formatting
-        // if((int)timerscript.secondsCount < 10){
-        //     timerText.text = 
-        // (timerscript.minuteCount +":"+"0"+(int)timerscript.secondsCount).ToString();
-        // }
-
-        // else{
-        //     timerText.text = 
-        // (timerscript.minuteCount +":"+ (int)timerscript.secondsCount)
-        // .ToString(); 
-        // }
-        // #endregion
-        // timerText.text = (timerscript.minuteCount +":"+ (int)timerscript.secondsCount).ToString();
-
+    {  
         moveCount.text = "Moves: " + moveCounter.ToString();
         #region Check input before play
         if (Mytextbox.text.Length > 3)
