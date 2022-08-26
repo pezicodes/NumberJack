@@ -240,8 +240,6 @@ public class MultiplayerManager : MonoBehaviour
         GAMEPLAY.SetActive(false);
         VICTORY.SetActive(true);
     }
-
-    // void Lose()
     // {
     //     GAMEPLAY.SetActive(false);
     //     FAILED.SetActive(true);
