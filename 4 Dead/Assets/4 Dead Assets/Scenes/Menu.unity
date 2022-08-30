@@ -1424,15 +1424,15 @@ RectTransform:
   m_GameObject: {fileID: 277283120}
   m_LocalRotation: {x: -0, y: -0, z: -0.018150423, w: 0.9998353}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.38000003, y: 0.38000003, z: 0.38000003}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 673328186}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.08}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 121, y: -35.199997}
+  m_AnchoredPosition: {x: 131.44995, y: -35.199997}
   m_SizeDelta: {x: 400.8, y: 420.5}
   m_Pivot: {x: 0.55325246, y: 0.5620073}
 --- !u!114 &277283122
@@ -8519,8 +8519,8 @@ RectTransform:
   m_GameObject: {fileID: 607779863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.96000004, y: 0.96000004, z: 0.96000004}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 15385461}
   m_RootOrder: 1
@@ -10492,15 +10492,15 @@ RectTransform:
   m_GameObject: {fileID: 858798951}
   m_LocalRotation: {x: -0, y: -0, z: -0.0218148, w: 0.99976206}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.38000003, y: 0.38000003, z: 0.38000003}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 673328186}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -67.44995, y: 122.58957}
+  m_AnchoredPosition: {x: -57, y: 122.58957}
   m_SizeDelta: {x: 409.8, y: 420.5}
   m_Pivot: {x: 0.55325246, y: 0.5620073}
 --- !u!95 &858798953
@@ -11770,9 +11770,9 @@ MonoBehaviour:
   volumeLayer:
     serializedVersion: 2
     m_Bits: 64
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 1
-  antialiasingMode: 1
+  stopNaNPropagation: 0
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -12022,15 +12022,15 @@ RectTransform:
   m_GameObject: {fileID: 1051223208}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.38000003, y: 0.38000003, z: 0.38000003}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 673328186}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233, y: 123.41792}
+  m_AnchoredPosition: {x: -222.55005, y: 123.41792}
   m_SizeDelta: {x: 442.8, y: 420.5}
   m_Pivot: {x: 0.55325246, y: 0.5620073}
 --- !u!95 &1051223210
@@ -19248,8 +19248,8 @@ RectTransform:
   m_GameObject: {fileID: 1431902269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.96000004, y: 0.96000004, z: 0.96000004}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 15385461}
   m_RootOrder: 2
@@ -20875,8 +20875,8 @@ RectTransform:
   m_GameObject: {fileID: 1647443339}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.96000004, y: 0.96000004, z: 0.96000004}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 15385461}
   m_RootOrder: 0
@@ -21928,8 +21928,8 @@ RectTransform:
   m_GameObject: {fileID: 1758062730}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.96000004, y: 0.96000004, z: 0.96000004}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 302188456}
   m_Father: {fileID: 15385461}

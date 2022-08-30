@@ -27844,7 +27844,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.006551573, y: 0.03334361}
+  m_AnchoredPosition: {x: -0.006551573, y: 0.051898297}
   m_SizeDelta: {x: 0, y: 8625.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1714670098
@@ -28319,8 +28319,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 519398893}
   m_HandleRect: {fileID: 519398892}
   m_Direction: 2
-  m_Value: 0.99999124
-  m_Size: 0.18656014
+  m_Value: 0.9999933
+  m_Size: 0.18656068
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -30975,9 +30975,9 @@ MonoBehaviour:
   volumeLayer:
     serializedVersion: 2
     m_Bits: 64
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 1
-  antialiasingMode: 1
+  stopNaNPropagation: 0
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25

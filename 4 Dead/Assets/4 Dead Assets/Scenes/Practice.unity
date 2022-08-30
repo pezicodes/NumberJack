@@ -12448,9 +12448,9 @@ MonoBehaviour:
   volumeLayer:
     serializedVersion: 2
     m_Bits: 64
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 1
-  antialiasingMode: 1
+  stopNaNPropagation: 0
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
