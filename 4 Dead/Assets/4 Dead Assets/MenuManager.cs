@@ -22,7 +22,10 @@ public class MenuManager : MonoBehaviour
     
     [Space]
     public Text playerCoins, playerGems;
+
     public int playerCoinsCount, playerGemsCount;
+
+    public Text QuickJack24HourTimer;
 
     public static MenuManager InstanceMenu;  
 
@@ -203,5 +206,39 @@ public class MenuManager : MonoBehaviour
     //     Application.OpenURL("https://www.instagram.com/ominarts/");
         
     // }
+
+
+    // #region Quick-Jack Hour Limit Timer once every 24hours 
+    
+    // public CanvasGroup QuickPlayButton;
+    // float secondsCount;
+    // int minuteCount;
+    // int hourCount;
+
+    // public void QuickJackHourLimitTimer(){ // once every 24hours 
+
+    //     secondsCount += Time.deltaTime;
+       
+    //     if(secondsCount >= 60){
+    //         minuteCount++;
+    //         secondsCount = 0;
+    //     }
+
+    //     else if(minuteCount >= 60){
+    //         hourCount++;
+    //         minuteCount = 0;     
+    //     }
+
+    //     QuickJack24HourTimer.text = hourCount.ToString("00") + ":" + minuteCount.ToString("00") + ":" + Mathf.Ceil(secondsCount).ToString("00");
+        
+    // }
+
+    // #endregion
+
+    // void Update(){
+    //     QuickPlayButton.interactable = false; 
+    //     QuickJackHourLimitTimer();
+    // }
+
 
 }
