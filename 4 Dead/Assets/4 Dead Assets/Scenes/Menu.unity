@@ -13168,7 +13168,6 @@ MonoBehaviour:
   playerCoinsCount: 0
   playerGemsCount: 0
   QuickJack24HourTimer: {fileID: 1673323301}
-  QuickPlayButton: {fileID: 1515362712}
 --- !u!4 &1248637995
 Transform:
   m_ObjectHideFlags: 0
@@ -21506,7 +21505,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673323298}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
