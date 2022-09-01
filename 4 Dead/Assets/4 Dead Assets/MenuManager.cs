@@ -60,7 +60,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {   
-        PlayerPrefs.SetString("Username", "pezicodes");
+        
 
         InstanceMenu = this;
         CoinGemUpdate();
