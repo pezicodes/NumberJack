@@ -84,7 +84,7 @@ public class LobbyManager : ServerManager
             PhotonNetwork.CreateRoom(room_name, roomOp, null);
 
             Debug.Log(room_name + "Creating a Room");
-            SceneManager.LoadScene("Room"); //Load Game Scene
+            PhotonNetwork.LoadLevel("Room"); //Load Game Scene
         }
     }
 
