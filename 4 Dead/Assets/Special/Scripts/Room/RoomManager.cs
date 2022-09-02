@@ -8,8 +8,10 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class RoomManager : ServerManager
 {
     #region public variable
-    //public GameObject characters;
+    public GameObject characters;
     public bool isMaster = false;
+
+    [SerializeField] Transform RespawnSpot;
     #endregion
 
     [Header("RoomInfo UI")]
@@ -53,7 +55,7 @@ public class RoomManager : ServerManager
                 PhotonNetwork.PlayerList[i].SetCustomProperties(new Hashtable {{"Room", "room"}});
             }
         }
-        //CreateCharacter();
+        CreateCharacter();
         SetRoomInfo();
     }
 
@@ -82,7 +84,7 @@ public class RoomManager : ServerManager
     /// </summary>
     private void SetRoomInfo()
     {
-        roomName_TEXT.text = string.Format("Room : " + PhotonNetwork.CurrentRoom.Name + " Room");
+        roomName_TEXT.text = string.Format("Room : " + PhotonNetwork.CurrentRoom.Name);
         playerCount_TEXT.text = string.Format("Player : " + PhotonNetwork.CurrentRoom.PlayerCount +
                                                 " / " + PhotonNetwork.CurrentRoom.MaxPlayers);
     }
@@ -98,16 +100,31 @@ public class RoomManager : ServerManager
     /// <summary>
     /// 생성지점에 player가 들어오면 캐릭터프리팹 생성
     /// </summary>
-    // private void CreateCharacter()
-    // {
-    //     if (characters == null)
-    //     {
-    //         Debug.Log("생성된 캐릭터가 없습니다.");    
-    //     }
-    //     else
-    //     {
-    //         GameObject go = PhotonNetwork.Instantiate("Prefabs/Character/Player", RespawnSpot.transform.position, Quaternion.identity);
-    //     }
-    // }
+    private void CreateCharacter()
+    {
+        if (characters == null)
+        {
+            Debug.Log("No characters have been created.");    
+        }
+        else
+        {   
+            foreach (Transform item in RespawnSpot)
+            {
+                Destroy(item.gameObject);
+            }
+
+            GameObject go = Instantiate(characters, RespawnSpot);
+            Text[] texts = go.GetComponentsInChildren<Text>();
+            texts[0].text = nick_name;
+
+            GameObject Go = PhotonNetwork.Instantiate
+            (characters.name, RespawnSpot.transform.position, Quaternion.identity);
+
+            
+   
+        }
+    }
+
+    
     #endregion
 }
