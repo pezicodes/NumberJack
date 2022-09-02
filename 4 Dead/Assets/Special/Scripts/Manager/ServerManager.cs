@@ -47,5 +47,6 @@ public class ServerManager : MonoBehaviourPunCallbacks
     {
         Debug.Log(cause);
         ConnectedToServer();
+        //ADD RECONNECT AND FAILED SCREEN 
     }
 }
