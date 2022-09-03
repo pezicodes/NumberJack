@@ -103,19 +103,19 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
     #region Pun Method
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=yellow>" + newPlayer.NickName + "님이 참가하셨습니다.</color>");
+        pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=yellow>" + newPlayer.NickName + "You have participated.</color>");
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=red>" + otherPlayer.NickName + "님이 퇴장하셨습니다.</color>");
+        pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=red>" + otherPlayer.NickName + "You have left.</color>");
     }
 
     public override void OnJoinedRoom()
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=green>방장[" + PhotonNetwork.NickName + "]님이 참가하셨습니다.</color>");
+            pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=green>Wardrobe[" + PhotonNetwork.NickName + "]You have participated.</color>");
         }
     }
     #endregion
@@ -150,12 +150,12 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
 
     public void OnSubscribed(string[] channels, bool[] results)
     {
-        AddLine(string.Format("채널({0}) 접속", string.Join(",", channels)));
+        AddLine(string.Format("Channel ({0}) connection", string.Join(",", channels)));
     }
 
     public void OnUnsubscribed(string[] channels)
     {
-        AddLine(string.Format("채널({0}) 접속 종료", string.Join(",", channels)));
+        AddLine(string.Format("Channel {0} connection termination", string.Join(",", channels)));
     }
 
     public void DebugReturn(DebugLevel level, string message)
