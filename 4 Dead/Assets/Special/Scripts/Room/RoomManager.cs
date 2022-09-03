@@ -59,18 +59,14 @@ public class RoomManager : ServerManager
         SetRoomInfo();
     }
 
-    /// <summary>
-    /// 새로운 player가 방에 입장할 때 채팅창에 플레이어 입장 소식을 처리
-    /// </summary>
+    
     /// <param name="newPlayer"></param>
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         UpdatePlayerCount();
     }
 
-    /// <summary>
-    /// player가 방에서 나갈 때 채팅창에 플레이어 퇴장 소식을 처리
-    /// </summary>
+  
     /// <param name="otherPlayer"></param>
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
@@ -79,28 +75,21 @@ public class RoomManager : ServerManager
     #endregion
 
     #region Private Method
-    /// <summary>
-    /// 방생성 시 입력한 방이름, 닉네임, 참가자 수를 세팅
-    /// </summary>
+
     private void SetRoomInfo()
     {
         roomName_TEXT.text = string.Format("Room : " + PhotonNetwork.CurrentRoom.Name);
         playerCount_TEXT.text = string.Format("Player : " + PhotonNetwork.CurrentRoom.PlayerCount +
                                                 " / " + PhotonNetwork.CurrentRoom.MaxPlayers);
     }
-    /// <summary>
-    /// 방에 입장한 인원 수를 업데이트 처리
-    /// </summary>
+
     private void UpdatePlayerCount()
     {
         playerCount_TEXT.text = string.Format("Player : " + PhotonNetwork.CurrentRoom.PlayerCount +
                                                 " / " + PhotonNetwork.CurrentRoom.MaxPlayers);
     }
 
-    /// <summary>
-    /// 생성지점에 player가 들어오면 캐릭터프리팹 생성
-    /// </summary>
-    private void CreateCharacter()
+     private void CreateCharacter()
     {
         if (characters == null)
         {
@@ -120,8 +109,6 @@ public class RoomManager : ServerManager
             GameObject Go = PhotonNetwork.Instantiate
             (characters.name, RespawnSpot.transform.position, Quaternion.identity);
 
-            
-   
         }
     }
 
