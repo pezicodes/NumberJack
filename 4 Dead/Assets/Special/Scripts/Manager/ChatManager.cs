@@ -153,6 +153,7 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
         AddLine(string.Format("Channel ({0}) connection", string.Join(",", channels)));
     }
 
+
     public void OnUnsubscribed(string[] channels)
     {
         AddLine(string.Format("Channel {0} connection termination", string.Join(",", channels)));
