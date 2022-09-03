@@ -60,9 +60,7 @@ public class RoomListInfo : MonoBehaviour
         participantCount_TEXT.text = string.Format(roomInfo.PlayerCount + " / " + roomInfo.MaxPlayers);
     }
 
-    /// <summary>
-    /// join 버튼 클릭 시 닉네임 팝업창 활성화
-    /// </summary>
+   
     public void OnClick_Join()
     {
         //lobbyUI.enterNickName_PopUp.SetActive(true);
