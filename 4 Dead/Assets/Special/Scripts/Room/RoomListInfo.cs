@@ -1,11 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using UnityEngine.UI;
-using TMPro;
-
-using Photon.Pun;
 using Photon.Realtime;
 
 public class RoomListInfo : MonoBehaviour
@@ -60,11 +55,11 @@ public class RoomListInfo : MonoBehaviour
         participantCount_TEXT.text = string.Format(roomInfo.PlayerCount + " / " + roomInfo.MaxPlayers);
     }
 
-   
     public void OnClick_Join()
     {
         //lobbyUI.enterNickName_PopUp.SetActive(true);
         //PhotonNetwork.JoinRoom((string)roomInfo.CustomProperties["RoomName"]);
-    }
+    }                                    
+
     #endregion
 }
