@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class quickkeys : MonoBehaviour
 {
     #region gameKeyboard
-
     public Text text;
     private CanvasGroup cv;
     public CanvasGroup All_Buttons;
