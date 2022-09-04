@@ -38,7 +38,6 @@ public class LoadingScreen : MonoBehaviourPunCallbacks
 		PhotonNetwork.JoinLobby();
 	}
 
-	
 	// public override void OnJoinedLobby()
 	// {
 	// 	MultiplayerNetworkManager.Instance.Lobby.SetActive(true);
