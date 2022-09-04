@@ -9,7 +9,6 @@ public class dialog : MonoBehaviour
 
     public void No() => dialogbox.SetActive(false);
 
-
     public void Yes(string temp){
         // dialogbox.SetActive(true);
         SceneManager.LoadScene(temp);
