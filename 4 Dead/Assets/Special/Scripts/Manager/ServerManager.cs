@@ -1,8 +1,6 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-
 public class ServerManager : MonoBehaviourPunCallbacks
 {
     #region singleton
