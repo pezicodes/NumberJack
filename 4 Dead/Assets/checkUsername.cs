@@ -8,12 +8,12 @@ public class checkUsername : MonoBehaviour
         if(!(PlayerPrefs.HasKey("Username"))){
 
             //to save player's username
-            SceneManager.LoadScene("Username");
+            AppManager.Instance.ChangeScene(AppManager.eSceneState.Username);
             return;
         }
 
         //load menu if username is saved 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        AppManager.Instance.ChangeScene(AppManager.eSceneState.Menu);
         
         
     }
