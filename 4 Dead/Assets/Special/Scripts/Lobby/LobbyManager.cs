@@ -26,6 +26,7 @@ public class LobbyManager : ServerManager
     {
         lobbyUI = GameObject.FindObjectOfType<LobbyUI>();
         PhotonNetwork.AutomaticallySyncScene = true;
+        isAlreadyConnected = false;
 
         if(!PhotonNetwork.IsConnected)
         {
@@ -99,10 +100,13 @@ public class LobbyManager : ServerManager
     /// <summary>
     /// 애플리케이션 종료
     /// </summary>
+    /// 
+    public bool isAlreadyConnected = false;
     public void Exit_BTN()
     {
         //Application.Quit();
         Debug.Log("App Termination Successful");
+        isAlreadyConnected = true;
         MultiplayerNetworkManager.Instance.Lobby.SetActive(false);
 		MultiplayerNetworkManager.Instance.LoadingScreen.SetActive(false);
         MultiplayerNetworkManager.Instance.NetworkManager.SetActive(true);
