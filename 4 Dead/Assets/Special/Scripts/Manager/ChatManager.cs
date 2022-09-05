@@ -57,6 +57,8 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
     public void AddLine(string _chatLine)
     {
         chatView_TEXT.text += _chatLine + "\n";
+
+        Debug.Log("This is the chat message" + _chatLine);
     }
 
     public void OnApplicationQuit()
