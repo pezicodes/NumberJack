@@ -10,8 +10,10 @@ public class AppManager : Singleton<AppManager>
    public enum eSceneState
     {
         App,
-        Intro,
-        Lobby,
+        Splash,
+
+        Username,
+        Menu,
         Room
     }
 
@@ -25,7 +27,7 @@ public class AppManager : Singleton<AppManager>
             DestroyImmediate(app.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        ChangeScene(eSceneState.Intro);
+        ChangeScene(eSceneState.Splash);
     }
 
     /// <summary>
@@ -41,27 +43,40 @@ public class AppManager : Singleton<AppManager>
                     SceneManager.LoadScene(eSceneState.App.ToString());
                 }
                 break;
-            case eSceneState.Intro:
+            case eSceneState.Splash:
                 {
-                    SceneManager.LoadScene(eSceneState.Intro.ToString());
+                    SceneManager.LoadScene(eSceneState.Splash.ToString());
                     if (PhotonNetwork.IsConnected)
                     {
-                        SceneManager.LoadSceneAsync(eSceneState.Intro.ToString()).completed += (oper) =>
+                        SceneManager.LoadSceneAsync(eSceneState.Splash.ToString()).completed += (oper) =>
                         {
-                            ChangeScene(eSceneState.Lobby);
+                            ChangeScene(eSceneState.Menu);
                         };
                     }
                 }
                 break;
-            case eSceneState.Lobby:
+            case eSceneState.Username:
                 {
                     if (PhotonNetwork.IsConnected)
                     {
-                        PhotonNetwork.LoadLevel(eSceneState.Lobby.ToString());
+                        PhotonNetwork.LoadLevel(eSceneState.Username.ToString());
                     }
                     else
                     {
-                        SceneManager.LoadScene(eSceneState.Lobby.ToString());
+                        SceneManager.LoadScene(eSceneState.Username.ToString());
+                    }
+                }
+                break;
+            
+            case eSceneState.Menu:
+                {
+                    if (PhotonNetwork.IsConnected)
+                    {
+                        PhotonNetwork.LoadLevel(eSceneState.Menu.ToString());
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene(eSceneState.Menu.ToString());
                     }
                 }
                 break;
