@@ -11,7 +11,7 @@ public class RoomManager : ServerManager
     public GameObject characters;
     public bool isMaster = false;
 
-    [SerializeField] Transform RespawnSpot;
+    public Transform RespawnSpot;
     #endregion
 
     [Header("RoomInfo UI")]
@@ -19,6 +19,8 @@ public class RoomManager : ServerManager
     [SerializeField] Text playerCount_TEXT;
 
     [SerializeField] RoomUI roomUI;
+
+    public static RoomManager InstanceRoomManager;  
 
     #region private variable
     private string nick_name;
@@ -30,7 +32,8 @@ public class RoomManager : ServerManager
         roomUI = GameObject.FindObjectOfType<RoomUI>();
     }
     private void Start()
-    {
+    {   
+        InstanceRoomManager = this;
         if (PhotonNetwork.IsMasterClient)
         {
             isMaster = true;
@@ -41,7 +44,7 @@ public class RoomManager : ServerManager
     #region Pun Method
     public override void OnJoinedRoom()
     {
-        Debug.Log(PhotonNetwork.CurrentRoom.Name + "방 입장 성공");
+        Debug.Log(PhotonNetwork.CurrentRoom.Name + "Successful room entry");
         PhotonNetwork.AutomaticallySyncScene = true;
         nick_name = PlayerPrefs.GetString("User_Name");
 
@@ -97,17 +100,14 @@ public class RoomManager : ServerManager
         }
         else
         {   
-            foreach (Transform item in RespawnSpot)
-            {
-                Destroy(item.gameObject);
-            }
+            
+            // GameObject go = Instantiate(characters, RespawnSpot);
+            // Text[] texts = go.GetComponentsInChildren<Text>();
+            // texts[0].text = PhotonNetwork.NickName; //name of string
 
-            GameObject go = Instantiate(characters, RespawnSpot);
-            Text[] texts = go.GetComponentsInChildren<Text>();
-            texts[0].text = nick_name;
-
-            GameObject Go = PhotonNetwork.Instantiate
-            (characters.name, RespawnSpot.transform.position, Quaternion.identity);
+    
+            GameObject Go = PhotonNetwork.Instantiate(characters.name, RespawnSpot.transform.position, Quaternion.identity);
+        
 
         }
     }
