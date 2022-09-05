@@ -757,19 +757,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 80959417}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CreateAndJoinRooms, Assembly-CSharp
-        m_MethodName: JoinRoom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &80959417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25032,6 +25020,7 @@ MonoBehaviour:
   listContent_TR: {fileID: 1016792270}
   isConnected: 0
   roomList_prefab: {fileID: 2499306523748851965, guid: 66541db4c49a0934e969e8ce22561278, type: 3}
+  isAlreadyConnected: 0
 --- !u!1 &1462329359
 GameObject:
   m_ObjectHideFlags: 0

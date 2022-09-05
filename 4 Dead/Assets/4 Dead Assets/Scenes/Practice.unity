@@ -438,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32530543}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -117.32056, y: -79.81445, z: 15583.68}
+  m_LocalPosition: {x: -117.32056, y: -79.81445, z: 3844633.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10774,7 +10774,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579324360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -117.32056, y: -79.81445, z: 15583.68}
+  m_LocalPosition: {x: -117.32056, y: -79.81445, z: 3844543.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12681,7 +12681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723118541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 540, y: 1080, z: 60110}
+  m_LocalPosition: {x: 540, y: 1080, z: 3844520}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25500,7 +25500,7 @@ MonoBehaviour:
   - {fileID: 1151553192}
   - {fileID: 2032164594}
   m_Instructions:
-  - m_VirtualCamera: {fileID: 0}
+  - m_VirtualCamera: {fileID: 2032164594}
     m_Hold: 0
     m_Blend:
       m_Style: 4
@@ -25515,7 +25515,7 @@ MonoBehaviour:
     m_Hold: 0
     m_Blend:
       m_Style: 5
-      m_Time: 0.4
+      m_Time: 0.6
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -38835,7 +38835,7 @@ MonoBehaviour:
   - m_VirtualCamera: {fileID: 579324362}
     m_Hold: 0
     m_Blend:
-      m_Style: 0
+      m_Style: 4
       m_Time: 0
       m_CustomCurve:
         serializedVersion: 2
@@ -38847,7 +38847,7 @@ MonoBehaviour:
     m_Hold: 0
     m_Blend:
       m_Style: 4
-      m_Time: 0.4
+      m_Time: 0.6
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

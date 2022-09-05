@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5280193014125881587}
   m_Layer: 5
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 2616235451840034743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.96, y: 0.96, z: 0.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2616235452497802253}
@@ -41,7 +41,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: 0}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 280, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2616235451840034736
@@ -733,3 +733,6 @@ MonoBehaviour:
   speaking_IMG: {fileID: 7437645341729604060}
   recording_IMG: {fileID: 8668550871759720194}
   playerName_TEXT: {fileID: 8854115725913021170}
+  pv: {fileID: 3053695910588977421}
+  pv_voice: {fileID: 1219558194176344720}
+  characters: {fileID: 2616235451840034743}
