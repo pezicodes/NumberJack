@@ -1,9 +1,3 @@
-using System.Threading;
-using System;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -49,19 +43,8 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public int solution(int[] A) {
-        // write your code in C# 6.0 with .NET 4.5 (Mono)
-
-        return solution(A);
-
-        
-        
-    }
-
     void Start()
     {   
-        
-
         InstanceMenu = this;
         CoinGemUpdate();
         
@@ -126,12 +109,11 @@ public class MenuManager : MonoBehaviour
         _GameModesHolder.SetActive(true);
         practicemenu.SetActive(false);
     }
-
     public void menuMulti()
     {
+
         _GameModesHolder.SetActive(false);
         LoadingScreen.SetActive(true);
-        
     }
 
     public void quitMulti()
