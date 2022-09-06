@@ -556,7 +556,6 @@ public class gamemanager : MonoBehaviour
         
         hammerupdate();
 
-        
         Invoke("resetHammer", 1.1f);
     }
 
@@ -588,7 +587,7 @@ public class gamemanager : MonoBehaviour
             buttons[pos].image.color = hammercolor;
             Debug.Log(hammernumber);
             //texts[pos].text = myEntries[pos].ToString();
-            Text btntext = buttons[i].GetComponentInChildren<Text>();
+            Text btntext = buttons[pos].GetComponentInChildren<Text>();
             btntext.text = hammernumber.ToString();
             i = 0;
             hammerchoices.RemoveAt(pos);
@@ -764,7 +763,7 @@ public class gamemanager : MonoBehaviour
         OppNum.ToArray();
 
         Debug.Log(OppNum.Count + "bombable count");
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {            
             int pos = UnityEngine.Random.Range(0, OppNum.Count);
             bombnumber = int.Parse(OppNum[pos]);
