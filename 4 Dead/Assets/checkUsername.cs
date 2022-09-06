@@ -13,7 +13,7 @@ public class checkUsername : MonoBehaviour
         }
 
         //load menu if username is saved 
-        AppManager.Instance.ChangeScene(AppManager.eSceneState.Menu);
+        AppManager.Instance.ChangeScene(AppManager.eSceneState.omiN);
         
         
     }
