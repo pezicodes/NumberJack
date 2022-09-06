@@ -3,6 +3,9 @@
 using UnityEngine.UI;
 using Photon.Realtime;
 
+using Photon.Pun;
+
+
 public class RoomListInfo : MonoBehaviour
 {
     #region Singleton
@@ -58,7 +61,7 @@ public class RoomListInfo : MonoBehaviour
     public void OnClick_Join()
     {
         //lobbyUI.enterNickName_PopUp.SetActive(true);
-        //PhotonNetwork.JoinRoom((string)roomInfo.CustomProperties["RoomName"]);
+        PhotonNetwork.JoinRoom((string)roomInfo.CustomProperties["RoomName"]);
     }                                    
 
     #endregion
