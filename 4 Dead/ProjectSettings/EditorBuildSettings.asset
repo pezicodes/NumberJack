@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/4 Dead Assets/Scenes/omiN.unity
+    guid: 7e993c7002f2cf241933a6238c122eff
+  - enabled: 1
+    path: Assets/4 Dead Assets/Scenes/Splash.unity
+    guid: b21d53efdd4f073409adeca8804c8e6c
+  - enabled: 1
     path: Assets/4 Dead Assets/Scenes/Username.unity
     guid: 7c6eaecd818b54e4db6667000ae56611
   - enabled: 1
