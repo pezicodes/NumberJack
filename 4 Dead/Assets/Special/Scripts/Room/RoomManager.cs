@@ -12,15 +12,24 @@ public class RoomManager : ServerManager
     public bool isMaster = false;
 
     public Transform RespawnSpot;
+    public Transform EnterNameSpot;
+
+    public GameObject PlayerUIAvatarChat;
+    public GameObject PlayerAvatarName;
     #endregion
 
     [Header("RoomInfo UI")]
     [SerializeField] Text  roomName_TEXT;
     [SerializeField] Text playerCount_TEXT;
-
+    [SerializeField] Text Instructions;
+    [SerializeField] CanvasGroup readyButton;
     [SerializeField] RoomUI roomUI;
 
     public static RoomManager InstanceRoomManager;  
+
+    [Header("Colors")]
+    [SerializeField] Color DisabledColor;
+    [SerializeField] Color EnabledColor;
 
     #region private variable
     private string nick_name;
@@ -81,7 +90,7 @@ public class RoomManager : ServerManager
 
     private void SetRoomInfo()
     {
-        roomName_TEXT.text = string.Format("Room : " + PhotonNetwork.CurrentRoom.Name);
+        roomName_TEXT.text = string.Format(PhotonNetwork.CurrentRoom.Name + " Room");
         playerCount_TEXT.text = string.Format("Player : " + PhotonNetwork.CurrentRoom.PlayerCount +
                                                 " / " + PhotonNetwork.CurrentRoom.MaxPlayers);
     }
@@ -100,18 +109,46 @@ public class RoomManager : ServerManager
         }
         else
         {   
-            
-            // GameObject go = Instantiate(characters, RespawnSpot);
-            // Text[] texts = go.GetComponentsInChildren<Text>();
-            // texts[0].text = PhotonNetwork.NickName; //name of string
-
-    
             GameObject Go = PhotonNetwork.Instantiate(characters.name, RespawnSpot.transform.position, Quaternion.identity);
-        
-
         }
+    }
+    
+    #endregion
+    private void Update()
+    {
+        CheckForPlayerCount();
     }
 
     
-    #endregion
+
+    void CheckForPlayerCount(){
+        if(PhotonNetwork.CurrentRoom.PlayerCount < PhotonNetwork.CurrentRoom.MaxPlayers){
+            readyButton.interactable = false;
+            readyButton.alpha = 0.6f;
+            Instructions.text = "waiting for players to join ...";
+            Instructions.color = DisabledColor;
+            return;
+        }
+
+        readyButton.interactable = true;
+        readyButton.alpha = 1f;
+        Instructions.text = "click ready to start";
+        Instructions.color = EnabledColor;
+        
+
+              
+    }
+
+    [SerializeField] GameObject RoomContent;
+    [SerializeField] GameObject PlayerNumber;
+    public void NextScreen(){   //player declaring readyy
+
+        RoomContent.SetActive(false);
+        PlayerNumber.SetActive(true);
+
+        
+    }
+
 }
+
+
