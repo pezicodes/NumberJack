@@ -14,7 +14,7 @@ public class VoiceUI : MonoBehaviour
     //private Canvas canvas;
      [SerializeField] PhotonView pv;
     [SerializeField] PhotonVoiceView pv_voice;
-    public GameObject characters;
+    
 
     #endregion
 
@@ -35,17 +35,22 @@ public class VoiceUI : MonoBehaviour
 
        //print(playerName_TEXT.text);
 
-       GameObject go = Instantiate(characters, RoomManager.InstanceRoomManager.RespawnSpot);
+       GameObject go = Instantiate(RoomManager.InstanceRoomManager.PlayerUIAvatarChat, RoomManager.InstanceRoomManager.RespawnSpot);
        Text[] texts = go.GetComponentsInChildren<Text>();
-       texts[0].text = playerName_TEXT.text; //name of string
+       texts[0].text = playerName_TEXT.text;
+       
+       GameObject Namego = Instantiate(RoomManager.InstanceRoomManager.PlayerAvatarName, RoomManager.InstanceRoomManager.EnterNameSpot);
+       Text[] Nametexts = Namego.GetComponentsInChildren<Text>();
+       texts[0].text = playerName_TEXT.text; 
+        //name of string
 
     }
 
     private void Update()
     {
         //speaking_IMG.enabled = pv_voice.IsSpeaking;
-        // 상대가 말하는 것을 출력할 때 이미지가 나오도록 출력
+       
         //recording_IMG.enabled = pv_voice.IsRecording;
-        // 말하고 있을 때 해당 이미지가 나오도록 출력
+        
     }
 }
