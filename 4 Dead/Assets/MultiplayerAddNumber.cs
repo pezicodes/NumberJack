@@ -8,22 +8,20 @@ using UnityEngine.SceneManagement;
 public class MultiplayerAddNumber : MonoBehaviour
 {
     #region Main Game Play Variables 
-    //public static MultiplayerManager multiPlay;
+    
+    public static MultiplayerAddNumber multiplayerNumber;
 
-    char first_opp, second_opp, third_opp, fourth_opp;
-    char first_my, second_my, third_my, fourth_my;
     public Text Mytextbox;
     public Button StartBtn;
     string myEntries;
-    string OppEntries;
-    string result;
-    string Opptextbox;
+    
     
     #endregion
 
     #region GameManager's Methods
     public void Start()
     {
+        multiplayerNumber = this;
         ColorUtility.TryParseHtmlString
         ("#9DD300", out greenColor);
 
@@ -37,12 +35,8 @@ public class MultiplayerAddNumber : MonoBehaviour
 
     public void clearMemory()
     {
-        result = "";
         reset();
     }
-    
-
-
  
     private void Update()
     {  
