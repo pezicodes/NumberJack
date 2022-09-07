@@ -41,34 +41,17 @@ public class RoomUI : UIManager
     #endregion
 
     #region Public Method
-    /// <summary>
-    /// FPV / TPV 시점을 전환처리하는 메서드
-    /// </summary>
-    // public void Change_Cam()
-    // { 
-    //     if (isFPV == false)
-    //     {
-    //         CameraController.Instance.SetCamera_Third();
-    //         //cam_TEXT.text = string.Format("TPV");
-    //         //cam_BTN.image.sprite = toggle_LEFT;
-    //         isFPV = true;
-     
-    //     }
-    //     else if (isFPV == true)
-    //     {
-    //         CameraController.Instance.SetCamera_First();
-    //        // cam_TEXT.text = string.Format("FPV");
-    //        // cam_BTN.image.sprite = toggle_RIGHT;
-    //         isFPV = false;
-
-    //     }
-    // }
 
     public override void Exit_BTN()
     {   
-        PhotonNetwork.LeaveRoom();
-        Debug.Log(PhotonNetwork.CurrentRoom.Name + "Room => Lobby movement");
-        AppManager.Instance.ChangeScene(AppManager.eSceneState.Menu);
+        
+        PhotonNetwork.LeaveRoom(true); 
+        RoomManager.InstanceRoomManager.RoomContent.SetActive(false);
+        RoomManager.InstanceRoomManager.PlayerNumber.SetActive(false);  
+        RoomManager.InstanceRoomManager.GoHome.SetActive(true);  
+        PhotonNetwork.Destroy(VoiceUI.playerkey.MyPlayer);
+        PhotonNetwork.Disconnect();
+    
     }
     #endregion
 
