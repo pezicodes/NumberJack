@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -117,7 +117,10 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=green>Wardrobe[" + PhotonNetwork.NickName + "]You have participated.</color>");
+            pv_Chat.RPC("PlayerState", RpcTarget.All, 
+            "<color=green>Wardrobe[" + PhotonNetwork.NickName + "]You have participated.</color>");
+
+            
         }
     }
     #endregion
