@@ -14,7 +14,10 @@ public class VoiceUI : MonoBehaviour
     //private Canvas canvas;
      [SerializeField] PhotonView pv;
     [SerializeField] PhotonVoiceView pv_voice;
+
+    public static VoiceUI playerkey;
     
+    public GameObject MyPlayer;
 
     #endregion
 
@@ -22,7 +25,7 @@ public class VoiceUI : MonoBehaviour
 
     private void Start()
     {
-
+        playerkey = this;
         TurnOnVoice();
 
         // 해당 Player가 방에 입장하거나 생성할 때 입력한 닉네임을 불러와 출력
@@ -39,9 +42,8 @@ public class VoiceUI : MonoBehaviour
        Text[] texts = go.GetComponentsInChildren<Text>();
        texts[0].text = playerName_TEXT.text;
        
-       GameObject Namego = Instantiate(RoomManager.InstanceRoomManager.PlayerAvatarName, RoomManager.InstanceRoomManager.EnterNameSpot);
-       Text[] Nametexts = Namego.GetComponentsInChildren<Text>();
-       texts[0].text = playerName_TEXT.text; 
+       
+       
         //name of string
 
     }
