@@ -47,6 +47,10 @@ public class RoomManager : ServerManager
         {
             isMaster = true;
         }
+
+        RoomContent.SetActive(true);
+        PlayerNumber.SetActive(false);
+        GoHome.SetActive(false);
     }
     #endregion
 
@@ -76,6 +80,7 @@ public class RoomManager : ServerManager
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         UpdatePlayerCount();
+        
     }
 
   
@@ -83,6 +88,8 @@ public class RoomManager : ServerManager
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         UpdatePlayerCount();
+        
+        
     }
     #endregion
 
@@ -93,12 +100,14 @@ public class RoomManager : ServerManager
         roomName_TEXT.text = string.Format(PhotonNetwork.CurrentRoom.Name + " Room");
         playerCount_TEXT.text = string.Format("Player : " + PhotonNetwork.CurrentRoom.PlayerCount +
                                                 " / " + PhotonNetwork.CurrentRoom.MaxPlayers);
+                                                CheckForPlayerCount();
     }
 
     private void UpdatePlayerCount()
     {
         playerCount_TEXT.text = string.Format("Player : " + PhotonNetwork.CurrentRoom.PlayerCount +
                                                 " / " + PhotonNetwork.CurrentRoom.MaxPlayers);
+                                                CheckForPlayerCount();
     }
 
      private void CreateCharacter()
@@ -114,13 +123,7 @@ public class RoomManager : ServerManager
     }
     
     #endregion
-    private void Update()
-    {
-        CheckForPlayerCount();
-    }
-
     
-
     void CheckForPlayerCount(){
         if(PhotonNetwork.CurrentRoom.PlayerCount < PhotonNetwork.CurrentRoom.MaxPlayers){
             readyButton.interactable = false;
@@ -133,20 +136,26 @@ public class RoomManager : ServerManager
         readyButton.interactable = true;
         readyButton.alpha = 1f;
         Instructions.text = "click ready to start";
-        Instructions.color = EnabledColor;
-        
-
-              
+        Instructions.color = EnabledColor;          
     }
 
-    [SerializeField] GameObject RoomContent;
-    [SerializeField] GameObject PlayerNumber;
+    public GameObject RoomContent;
+    public GameObject PlayerNumber;
+
+    public GameObject GoHome;
     public void NextScreen(){   //player declaring readyy
 
         RoomContent.SetActive(false);
         PlayerNumber.SetActive(true);
 
-        
+        GameObject Namego = Instantiate(PlayerAvatarName, EnterNameSpot);
+       Text[] Nametexts = Namego.GetComponentsInChildren<Text>();
+       Nametexts[0].text = PlayerPrefs.GetString("Username");
+
+    }
+
+    public void Menu(){
+        AppManager.Instance.ChangeScene(AppManager.eSceneState.Menu);
     }
 
 }
