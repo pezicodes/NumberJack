@@ -24,7 +24,8 @@ public class multiKeys : MonoBehaviour
     {
         spacebox.text = spacebox.text + text.text;
 
-        MultiplayerManager.multiPlay.decipher();
+        //MultiplayerManager.multiPlay.decipher();
+        MultiplayerAddNumber.multiplayerNumber.decipher();
 
         cv.interactable = false;
         if (cv.interactable == false)
