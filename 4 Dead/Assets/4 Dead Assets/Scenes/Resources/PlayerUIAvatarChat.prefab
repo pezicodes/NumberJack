@@ -415,7 +415,7 @@ MonoBehaviour:
   playerName_TEXT: {fileID: 5580575911167352688}
   pv: {fileID: 2158063347704894607}
   pv_voice: {fileID: 2845904263635912466}
-  characters: {fileID: 1431211359805174325}
+  MyPlayer: {fileID: 1431211359805174325}
 --- !u!1 &7337122902672248187
 GameObject:
   m_ObjectHideFlags: 0
