@@ -28,7 +28,6 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
-
     public virtual void Exit_BTN()
     {
         Application.Quit();
