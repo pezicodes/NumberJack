@@ -41,7 +41,6 @@ public class RoomUI : UIManager
     #endregion
 
     #region Public Method
-
     public override void Exit_BTN()
     {   
         
