@@ -7,7 +7,6 @@ public class CreateProfile : MonoBehaviour
 {
     public Text Username;
     public Text UsernameHolder;
-
     public void SaveUser(){
 
         PlayerPrefs.SetString("Username", Username.text);
