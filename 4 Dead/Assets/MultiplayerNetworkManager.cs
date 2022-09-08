@@ -16,7 +16,6 @@ public class MultiplayerNetworkManager : MonoBehaviour
         Lobby,
         Game
     }
-
     public PanelStates multiplayerscreens;
 
     private void Start()
