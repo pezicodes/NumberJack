@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CareerManager : MonoBehaviour
 {
-   // [Header("Career Mechanism")]
-
-
-
+   
 
 }
