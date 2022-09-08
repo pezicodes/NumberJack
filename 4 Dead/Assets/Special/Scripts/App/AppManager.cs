@@ -16,7 +16,6 @@ public class AppManager : Singleton<AppManager>
         Menu,
         Room
     }
-
     public eSceneState sceneState;
 
     private void Start()
