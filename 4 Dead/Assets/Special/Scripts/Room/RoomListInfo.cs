@@ -57,7 +57,7 @@ public class RoomListInfo : MonoBehaviour
         roomName_TEXT.text = (string)roomInfo.CustomProperties["RoomName"];
         participantCount_TEXT.text = string.Format(roomInfo.PlayerCount + " / " + roomInfo.MaxPlayers);
     }
-
+    
     public void OnClick_Join()
     {
         //lobbyUI.enterNickName_PopUp.SetActive(true);
