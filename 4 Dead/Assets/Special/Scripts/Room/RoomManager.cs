@@ -141,7 +141,6 @@ public class RoomManager : ServerManager
 
     public GameObject RoomContent;
     public GameObject PlayerNumber;
-
     public GameObject GoHome;
     public void NextScreen(){   //player declaring readyy
 
