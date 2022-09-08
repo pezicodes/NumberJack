@@ -38,7 +38,6 @@ public class ServerManager : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
     }
     #endregion
-
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log(cause);
