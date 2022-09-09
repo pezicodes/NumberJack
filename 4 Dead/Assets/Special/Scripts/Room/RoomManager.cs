@@ -88,18 +88,19 @@ public class RoomManager : ServerManager
     {
         UpdatePlayerCount();
       
-        foreach (Transform item in RespawnSpot)
+        foreach (Transform obj in RespawnSpot)
         {   
-            Text[] texts = gameObject.GetComponentsInChildren<Text>();
-            Debug.LogWarning(texts[0].text);
-            Debug.LogWarning(gameObject.name);
-            if(PlayerPrefs.GetString("OpponentName") == texts[0].text){
-                Destroy(item.gameObject);
-            } 
-        }
-        
-        Debug.LogWarning("Deleted PlayerAvatarName");
+ 
+            Text textname = obj.GetComponentInChildren<Text>();
 
+            if(textname.text != PlayerPrefs.GetString("Username")){
+                Debug.Log(textname.text);
+                Destroy(obj.gameObject);
+
+                Debug.LogWarning("Deleted PlayerAvatarName");
+            }
+ 
+        }
     }
     #endregion
 
