@@ -58,6 +58,7 @@ public class LobbyManager : ServerManager
     {
         string room_name = roomName;
         string nick_name = nickName;
+
         if (string.IsNullOrEmpty(roomName) || string.IsNullOrEmpty(nickName))
         {
             return;
@@ -95,6 +96,7 @@ public class LobbyManager : ServerManager
     public void Quick_JoinRoom()
     {
         PhotonNetwork.JoinRandomRoom();
+        
     }
 
     /// <summary>
@@ -105,7 +107,8 @@ public class LobbyManager : ServerManager
     public void Exit_BTN()
     {
         //Application.Quit();
-        Debug.Log("App Termination Successful");
+        PhotonNetwork.LeaveLobby();
+        Debug.Log("Left Lobby");
         
         MultiplayerNetworkManager.Instance.Lobby.SetActive(false);
 		MultiplayerNetworkManager.Instance.LoadingScreen.SetActive(false);
@@ -157,4 +160,11 @@ public class LobbyManager : ServerManager
 
     }
     #endregion
+
+    List<RoomInfo> roomLists = new List<RoomInfo>();
+    public void RefreshRoomList(){
+        Debug.Log("Refreshing");
+        OnRoomListUpdate(roomLists);
+
+    }
 }
