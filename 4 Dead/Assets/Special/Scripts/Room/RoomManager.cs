@@ -83,15 +83,26 @@ public class RoomManager : ServerManager
         
     }
 
+    public bool LeftRoom = false;
   
     /// <param name="otherPlayer"></param>
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         UpdatePlayerCount();
+        LeftRoom = true;
+        if(RoomManager.InstanceRoomManager.LeftRoom == true && PlayerPrefs.HasKey("OpponentName")){
+            Destroy(PlayerAvatarName);
+        }
+        
+        PhotonNetwork.DestroyPlayerObjects(otherPlayer);
         
         
     }
     #endregion
+
+    void Delete(){
+        
+    }
 
     #region Private Method
 
@@ -118,7 +129,7 @@ public class RoomManager : ServerManager
         }
         else
         {   
-            GameObject Go = PhotonNetwork.Instantiate(characters.name, RespawnSpot.transform.position, Quaternion.identity);
+            GameObject PlayerCharacter = PhotonNetwork.Instantiate(characters.name, RespawnSpot.transform.position, Quaternion.identity);
         }
     }
     
@@ -147,9 +158,9 @@ public class RoomManager : ServerManager
         RoomContent.SetActive(false);
         PlayerNumber.SetActive(true);
 
-        GameObject Namego = Instantiate(PlayerAvatarName, EnterNameSpot);
-       Text[] Nametexts = Namego.GetComponentsInChildren<Text>();
-       Nametexts[0].text = PlayerPrefs.GetString("Username");
+        GameObject PlayerAvatarName = Instantiate(this.PlayerAvatarName, EnterNameSpot);
+        Text[] Nametexts = PlayerAvatarName.GetComponentsInChildren<Text>();
+        Nametexts[0].text = PlayerPrefs.GetString("Username");
 
     }
 
