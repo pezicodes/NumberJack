@@ -82,21 +82,24 @@ public class RoomManager : ServerManager
         UpdatePlayerCount();
         
     }
-
-    public bool LeftRoom = false;
   
     /// <param name="otherPlayer"></param>
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         UpdatePlayerCount();
-        LeftRoom = true;
-        if(RoomManager.InstanceRoomManager.LeftRoom == true && PlayerPrefs.HasKey("OpponentName")){
-            Destroy(PlayerAvatarName);
+      
+        foreach (Transform item in RespawnSpot)
+        {   
+            Text[] texts = gameObject.GetComponentsInChildren<Text>();
+            Debug.LogWarning(texts[0].text);
+            Debug.LogWarning(gameObject.name);
+            if(PlayerPrefs.GetString("OpponentName") == texts[0].text){
+                Destroy(item.gameObject);
+            } 
         }
         
-        PhotonNetwork.DestroyPlayerObjects(otherPlayer);
-        
-        
+        Debug.LogWarning("Deleted PlayerAvatarName");
+
     }
     #endregion
 
