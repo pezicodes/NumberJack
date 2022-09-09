@@ -8,7 +8,7 @@ public class VoiceUI : MonoBehaviour
 {
     [SerializeField] Image speaking_IMG;
     [SerializeField] Image recording_IMG;
-    [SerializeField] Text playerName_TEXT;
+    public Text playerName_TEXT;
 
     #region Private variable
     //private Canvas canvas;
@@ -36,15 +36,15 @@ public class VoiceUI : MonoBehaviour
 
        playerName_TEXT.text = pv.Owner.NickName;
 
-       //print(playerName_TEXT.text);
-
-       GameObject go = Instantiate(RoomManager.InstanceRoomManager.PlayerUIAvatarChat, RoomManager.InstanceRoomManager.RespawnSpot);
-       Text[] texts = go.GetComponentsInChildren<Text>();
+       GameObject PlayerAvatar = Instantiate(RoomManager.InstanceRoomManager.PlayerAvatarName, RoomManager.InstanceRoomManager.RespawnSpot);
+       Text[] texts = PlayerAvatar.GetComponentsInChildren<Text>();
        texts[0].text = playerName_TEXT.text;
-       
-       
-       
-        //name of string
+
+       if(playerName_TEXT.text == PlayerPrefs.GetString("Username")){
+            return;
+       }
+
+       PlayerPrefs.SetString("OpponentName", playerName_TEXT.text);
 
     }
 
@@ -53,6 +53,9 @@ public class VoiceUI : MonoBehaviour
         //speaking_IMG.enabled = pv_voice.IsSpeaking;
        
         //recording_IMG.enabled = pv_voice.IsRecording;
+     
         
     }
+
+    
 }
