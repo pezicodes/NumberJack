@@ -44,12 +44,13 @@ public class RoomUI : UIManager
     public override void Exit_BTN()
     {   
         
-        PhotonNetwork.LeaveRoom(true); 
+        PhotonNetwork.LeaveRoom(); 
+        
         RoomManager.InstanceRoomManager.RoomContent.SetActive(false);
         RoomManager.InstanceRoomManager.PlayerNumber.SetActive(false);  
         RoomManager.InstanceRoomManager.GoHome.SetActive(true);  
-        PhotonNetwork.Destroy(VoiceUI.playerkey.MyPlayer);
-        PhotonNetwork.Disconnect();
+
+        //PhotonNetwork.Disconnect();
     
     }
     #endregion
