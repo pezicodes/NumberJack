@@ -45,7 +45,7 @@ public class RoomUI : UIManager
     {   
         
         PhotonNetwork.LeaveRoom(); 
-        
+        PhotonNetwork.LeaveLobby();
         RoomManager.InstanceRoomManager.RoomContent.SetActive(false);
         RoomManager.InstanceRoomManager.PlayerNumber.SetActive(false);  
         RoomManager.InstanceRoomManager.GoHome.SetActive(true);  
