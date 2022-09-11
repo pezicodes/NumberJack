@@ -62,6 +62,7 @@ public class RoomListInfo : MonoBehaviour
     {
         //lobbyUI.enterNickName_PopUp.SetActive(true);
         PhotonNetwork.JoinRoom((string)roomInfo.CustomProperties["RoomName"]);
+        
     }                                    
 
     #endregion
