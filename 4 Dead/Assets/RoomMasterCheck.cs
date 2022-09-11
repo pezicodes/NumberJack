@@ -14,8 +14,8 @@ public class RoomMasterCheck : MonoBehaviour
     
     public void SendKickPlayer(int playerID)
     {
-        PhotonPlayer player = PhotonPlayer.Find(playerID);
+       // PhotonPlayer player = PhotonPlayer.Find(playerID);
     
-        PhotonView.RPC("KickPlayer",player);
+      //  PhotonView.RPC("KickPlayer",player);
     }
 }
