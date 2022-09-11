@@ -1,10 +1,12 @@
-﻿
+﻿using System.Collections;
+
 using UnityEngine;
 
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections.Generic;
 
 public class LobbyUI : MonoBehaviour
 {
@@ -16,7 +18,7 @@ public class LobbyUI : MonoBehaviour
     [SerializeField]Button Exit_BTN;
 
     [Header("Room List")]
-    [SerializeField]GameObject roomListContainer;
+    [SerializeField]GameObject JoinUIPanel;
 
     [Header("Server Link TEXT")]
     [SerializeField]Text serverLink_TEXT;
@@ -39,7 +41,7 @@ public class LobbyUI : MonoBehaviour
     [SerializeField]Button backfromviewrooms_BTN;
     Text enterNickName_INPUT;
 
-    public GameObject quickState_PopUp;
+    [SerializeField] GameObject quickState_PopUp;
     [SerializeField]LobbyManager lobbyManager;
 
 
@@ -106,14 +108,14 @@ public class LobbyUI : MonoBehaviour
 
     private void PopUp_On_Rooms()
     {
-        roomListContainer.SetActive(true);
+        JoinUIPanel.SetActive(true);
         MultiplayerNetworkManager.Instance.Lobby.SetActive(false);
 		
     }
 
     private void PopUp_Off_Rooms()
     {
-        roomListContainer.SetActive(false);
+        JoinUIPanel.SetActive(false);
         MultiplayerNetworkManager.Instance.Lobby.SetActive(true);
 		
     }
@@ -174,14 +176,65 @@ public class LobbyUI : MonoBehaviour
         //enterNickName_PopUp.SetActive(false);
     }
 
+    int temp = 0;
+    [SerializeField] Text quickState_PopUpText;
+
+    [SerializeField] Text QuickJoin_Debugger;
+    [SerializeField] CanvasGroup QuickJoin_DebuggerCG;
+  
     private void QuickJoinRoom()
-    {
+    {   
+        JoinUIPanel.SetActive(false);
+        StartCoroutine("QuickJoinCounter");
+        quickState_PopUp.SetActive(true);
         lobbyManager.Quick_JoinRoom();
+        if(temp >= 5){
+            quickState_PopUpText.text = "No Rooms available";
+            print(temp);
+        }
+  
+    }
+    IEnumerator QuickJoinCounter(){
+        temp = temp + 1;
+        
+        yield return temp;
     }
 
-    private void Close_QuickStatePopUp()
+    void Update(){
+       int roomCount = PhotonNetwork.CountOfRooms;
+       int playersinRooms = PhotonNetwork.CountOfPlayersInRooms;
+       if(roomCount > 0 || playersinRooms > 0){
+            quick_BTN.interactable = true;
+            QuickJoin_Debugger.text = "*Open Rooms are currently available";
+            QuickJoin_DebuggerCG.interactable = true;
+            
+       }
+
+       else{
+            quick_BTN.interactable = false;
+            QuickJoin_Debugger.text = "*There are currently no Open Rooms available";
+            QuickJoin_DebuggerCG.interactable = false;
+
+       }
+    }
+    // IEnumerator loader()
+    // {
+    //     load = 50;
+    //     int temp = Random.Range(68, 96);
+    //     while (load < temp)
+    //     {
+    //         load += Random.Range(0, temp - load);
+    //         loadCounter.text = load.ToString() + "%";
+    //         yield return new WaitForSeconds(3);
+    //     }
+
+
+    // }
+
+    public void Close_QuickStatePopUp()
     {
         quickState_PopUp.SetActive(false);
+        MenuManager.InstanceMenu.Multimenu.SetActive(true);
     }
     #endregion
 
