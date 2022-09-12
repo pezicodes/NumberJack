@@ -1,21 +1,8 @@
-
 using UnityEngine;
-
+using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
+public class RoomMasterCheck
+{ 
 
-
-public class RoomMasterCheck : MonoBehaviour
-{
-    [PunRPC]
-    private void KickPlayer()
-    {
-        PhotonNetwork.LeaveRoom(); // load lobby scene, returns to master server
-    }
-    
-    public void SendKickPlayer(int playerID)
-    {
-       // PhotonPlayer player = PhotonPlayer.Find(playerID);
-    
-      //  PhotonView.RPC("KickPlayer",player);
-    }
 }
