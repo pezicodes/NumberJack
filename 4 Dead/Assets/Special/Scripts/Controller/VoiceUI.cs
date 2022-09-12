@@ -19,6 +19,8 @@ public class VoiceUI : MonoBehaviour
     
     public GameObject MyPlayer;
 
+    private string PlayerName;
+
     #endregion
 
    
@@ -28,14 +30,13 @@ public class VoiceUI : MonoBehaviour
         playerkey = this;
         TurnOnVoice();
 
-        // 해당 Player가 방에 입장하거나 생성할 때 입력한 닉네임을 불러와 출력
     }
 
     
     void TurnOnVoice(){
 
        playerName_TEXT.text = pv.Owner.NickName;
-
+       PlayerName = MyPlayer.GetComponentInChildren<Text>().text;
        GameObject PlayerAvatar = Instantiate(RoomManager.InstanceRoomManager.PlayerAvatarName, RoomManager.InstanceRoomManager.RespawnSpot);
        Text[] texts = PlayerAvatar.GetComponentsInChildren<Text>();
        texts[0].text = playerName_TEXT.text;
@@ -57,5 +58,53 @@ public class VoiceUI : MonoBehaviour
         
     }
 
-    
+    public void Kick()
+    {
+        PhotonNetwork.EnableCloseConnection(true);
+
+        Kick(PlayerPrefs.GetString("OpponentName"));
+        Debug.Log("Kicked Out of Room");
+        Debug.Log(PlayerPrefs.GetString("OpponentName"));
+
+    }
+    private void Kick(Text PlayerName)
+    {
+        if (PlayerName == null)
+        {
+            return; // log error?
+        }
+        string nickname = PlayerName.text;
+        Kick(nickname);
+    }
+
+    private void Kick(string nickname)
+    {
+        if (string.IsNullOrEmpty(nickname))
+        {
+            return; // log error?
+        }
+
+        for (int i = 0; i < PhotonNetwork.PlayerListOthers.Length; i++)
+        {
+            Player player = PhotonNetwork.PlayerListOthers[0];
+            if (!player.IsLocal && player.NickName.Equals(PlayerPrefs.GetString("OpponentName")))
+            {
+                Kick(player);
+                return;
+            }
+        }
+      
+    }
+
+    private void Kick(Player playerToKick)
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return; // log error?
+        }
+        PhotonNetwork.CloseConnection(playerToKick);
+    }
 }
+
+    
+
