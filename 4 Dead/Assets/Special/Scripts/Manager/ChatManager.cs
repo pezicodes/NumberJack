@@ -208,4 +208,6 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
     {
         throw new System.NotImplementedException();
     }
+
+
 }
