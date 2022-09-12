@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 2158063347704894607}
   - component: {fileID: 2845904263635912466}
   - component: {fileID: 9139229694149619057}
+  - component: {fileID: 2558821804800041688}
   m_Layer: 5
   m_Name: PlayerUIAvatarChat
   m_TagString: Player
@@ -216,6 +217,24 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &2558821804800041688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431211359805174325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2418c0f03f64ada44a7efe690d95ec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speaking_IMG: {fileID: 5811262438630507614}
+  recording_IMG: {fileID: 5755303976079821440}
+  playerName_TEXT: {fileID: 5580575911167352688}
+  pv: {fileID: 2158063347704894607}
+  pv_voice: {fileID: 2845904263635912466}
+  MyPlayer: {fileID: 1431211359805174325}
 --- !u!1 &1431211361268904320
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +324,6 @@ GameObject:
   - component: {fileID: 4389055363092794086}
   - component: {fileID: 6166573073647092098}
   - component: {fileID: 3200369642670211107}
-  - component: {fileID: 1772697223973091698}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -398,24 +416,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1772697223973091698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6979302174771675379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2418c0f03f64ada44a7efe690d95ec3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speaking_IMG: {fileID: 5811262438630507614}
-  recording_IMG: {fileID: 5755303976079821440}
-  playerName_TEXT: {fileID: 5580575911167352688}
-  pv: {fileID: 2158063347704894607}
-  pv_voice: {fileID: 2845904263635912466}
-  MyPlayer: {fileID: 1431211359805174325}
 --- !u!1 &7337122902672248187
 GameObject:
   m_ObjectHideFlags: 0
