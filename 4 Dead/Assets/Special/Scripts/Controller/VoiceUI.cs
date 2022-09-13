@@ -35,10 +35,19 @@ public class VoiceUI : MonoBehaviour
     
     void TurnOnVoice(){
 
-       playerName_TEXT.text = pv.Owner.NickName;
-       PlayerName = MyPlayer.GetComponentInChildren<Text>().text;
-       GameObject PlayerAvatar = Instantiate(RoomManager.InstanceRoomManager.PlayerAvatarName, RoomManager.InstanceRoomManager.RespawnSpot);
-       Text[] texts = PlayerAvatar.GetComponentsInChildren<Text>();
+        PlayerName = MyPlayer.GetComponentInChildren<Text>().text;
+        GameObject PlayerAvatar = Instantiate(RoomManager.InstanceRoomManager.PlayerAvatarName, 
+           RoomManager.InstanceRoomManager.RespawnSpot);
+        Text[] texts = PlayerAvatar.GetComponentsInChildren<Text>();
+        if (pv.Owner.IsLocal)
+        {
+            playerName_TEXT.text = pv.Owner.NickName + " (you)";
+        }
+        else
+        {
+            playerName_TEXT.text = pv.Owner.NickName;
+        }
+        
        texts[0].text = playerName_TEXT.text;
 
        if(playerName_TEXT.text == PlayerPrefs.GetString("Username")){
@@ -60,7 +69,7 @@ public class VoiceUI : MonoBehaviour
 
     public void Kick()
     {
-        PhotonNetwork.EnableCloseConnection(true);
+        //PhotonNetwork.EnableCloseConnection(true);
 
         Kick(PlayerPrefs.GetString("OpponentName"));
         Debug.Log("Kicked Out of Room");
