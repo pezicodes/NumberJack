@@ -18,6 +18,8 @@ public class RoomManager : ServerManager
     public GameObject PlayerAvatarName;
     #endregion
 
+    
+
     [Header("RoomInfo UI")]
     [SerializeField] Text  roomName_TEXT;
     [SerializeField] Text playerCount_TEXT;
@@ -26,10 +28,6 @@ public class RoomManager : ServerManager
     [SerializeField] RoomUI roomUI;
 
     public static RoomManager InstanceRoomManager;  
-
-    [Header("Colors")]
-    [SerializeField] Color DisabledColor;
-    [SerializeField] Color EnabledColor;
 
     #region private variable
     private string nick_name;
@@ -93,7 +91,7 @@ public class RoomManager : ServerManager
  
             Text textname = obj.GetComponentInChildren<Text>();
 
-            if(textname.text != PlayerPrefs.GetString("Username")){
+            if(textname.text != PlayerPrefs.GetString(PhotonNetwork.LocalPlayer.NickName)){
                 Debug.Log(textname.text);
                 Destroy(obj.gameObject);
 
@@ -103,10 +101,6 @@ public class RoomManager : ServerManager
         }
     }
     #endregion
-
-    void Delete(){
-        
-    }
 
     #region Private Method
 
@@ -139,19 +133,24 @@ public class RoomManager : ServerManager
     
     #endregion
     
-    void CheckForPlayerCount(){
-        if(PhotonNetwork.CurrentRoom.PlayerCount < PhotonNetwork.CurrentRoom.MaxPlayers){
+    void CheckForPlayerCount()
+    {
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount >= PhotonNetwork.CurrentRoom.MaxPlayers)
+        {
+            readyButton.interactable = true;
+            readyButton.alpha = 1f;
+            Instructions.text = "click ready to start";
+          
+        }
+        else
+        {
             readyButton.interactable = false;
-            readyButton.alpha = 0.6f;
+            readyButton.alpha = 0.5f;
             Instructions.text = "waiting for players to join ...";
-            Instructions.color = DisabledColor;
+            
             return;
         }
-
-        readyButton.interactable = true;
-        readyButton.alpha = 1f;
-        Instructions.text = "click ready to start";
-        Instructions.color = EnabledColor;          
     }
 
     public GameObject RoomContent;
