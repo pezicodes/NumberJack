@@ -25,8 +25,9 @@ public class MultiplayerManager : MonoBehaviour
     string result;
     string Opptextbox;
     
-    public GameObject rowPrefab;
-    public Transform rowParent;
+    public GameObject GuessChatObject;
+    public Transform LocalPlayerHistory;
+    public Transform OtherPlayerHistory;
     //movescounters
     int moveCounter;
     public Text moveCount;
@@ -42,13 +43,14 @@ public class MultiplayerManager : MonoBehaviour
     public void Start()
     {
         PlayerPrefs.SetInt("Dead", 0); //clear dead count - restarting game 
+        
         multiPlay = this;
         timerscript.enabled = true;
 
         print(moveCounter);
         moveCount.text = "Moves: " + moveCounter.ToString();
 
-        if(!(rowParent.childCount <= 0)){
+        if(!(LocalPlayerHistory.childCount <= 0)){
             {
                 Destroy(gameObject);
             }
@@ -64,7 +66,7 @@ public class MultiplayerManager : MonoBehaviour
         myEntries.ToArray();
 
         moveCount.text = moveCounter.ToString();
-        GAMEPLAY.SetActive(true);
+        GAMEPLAY.SetActive(false);
         VICTORY.SetActive(false);
         FAILED.SetActive(false);
         
@@ -100,6 +102,11 @@ public class MultiplayerManager : MonoBehaviour
     {   
         SceneManager.LoadScene("Menu");
     }
+
+    [TextArea]
+    public string[] Pezi_NumberJack_Console;
+    public int MessageInt = 0;
+    public string ChatText;
 
     void checkDeadandWounded()
     {
@@ -186,21 +193,54 @@ public class MultiplayerManager : MonoBehaviour
                 W = W + 1;
             }
         }
-   
-        GameObject Guess = Instantiate(rowPrefab, rowParent);
-        Text[] texts = Guess.GetComponentsInChildren<Text>();
-        texts[0].text = myEntries;
-        texts[1].text = D.ToString() + "d";
-        texts[2].text = W.ToString() + "w";
 
-        PlayerPrefs.SetInt("Dead", D);
-           
-        //losescreenText();
+        //Local Relay
+
         
+        //Server Relay
+        ChatManager.InstanceChat.SendChat(ChatManager.InstanceChat.chatView_INPUT.text + "-" + D.ToString() + "d" + "-" + W.ToString() + "w");
+        ChatText = ChatManager.InstanceChat.chatView_TEXT.text;
+
+        string test = ChatManager.InstanceChat.chatView_INPUT.text + D.ToString() + "d" + "-" + W.ToString() + "w";
+        //DOUBLE UPDATE
+
+        //String Formatting
+        Pezi_NumberJack_Console = test.Split("\n");
+
+        // entry =  [Aniki]:5678-0d-0w
+        string[] div1 = Pezi_NumberJack_Console[MessageInt].Split(":");
+        // result = [Aniki], 5678-0d-0w
+
+        // entry =  5678-0d-0w
+        string[] div2 = div1[0].Split("-");
+        // result = 5678, 0d, 0w
+
+
+        /*GameObject OtherPlayerGuess = Instantiate(GuessChatObject, OtherPlayerHistory);
+        Text[] OtherPlayerTexts = OtherPlayerGuess.GetComponentsInChildren<Text>();
+        OtherPlayerTexts[0].text = div2[0];
+        OtherPlayerTexts[1].text = div2[1];
+        OtherPlayerTexts[2].text = div2[2];*/
+
+        GameObject LocalPlayerGuess = Instantiate(GuessChatObject, LocalPlayerHistory);
+        Text[] LocalPlayerTexts = LocalPlayerGuess.GetComponentsInChildren<Text>();
+        LocalPlayerTexts[0].text = myEntries;
+        LocalPlayerTexts[1].text = D.ToString() + "d";
+        LocalPlayerTexts[2].text = W.ToString() + "w";
+        PlayerPrefs.SetInt("Dead", D);
+
+
+        //Clearing Local and Server Prefs
+        ChatManager.InstanceChat.chatView_INPUT.text = "";
         clear.codeClear.cleraAll();
         clearMemory();
+
+        //Add 1 to Message Counter
+        
+
+
     }
-  
+
     public void generateNumber()
     {
         //yield return Opptextbox;
@@ -241,9 +281,16 @@ public class MultiplayerManager : MonoBehaviour
         VICTORY.SetActive(true);
     }
 
- 
+    
     private void Update()
-    {  
+    {
+        #region ChatManager Branch
+
+        ChatText = ChatManager.InstanceChat.chatView_TEXT.text;
+        //DOUBLE UPDATE
+
+        #endregion
+
         moveCount.text = "Moves: " + moveCounter.ToString();
         #region Check input before play
         if (Mytextbox.text.Length > 3)
@@ -262,6 +309,8 @@ public class MultiplayerManager : MonoBehaviour
         {
             Invoke("Win", 1f);                  
         }
+
+
     }
 
     public void Send_Play()

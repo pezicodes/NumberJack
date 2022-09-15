@@ -26,4 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/4 Dead Assets/Scenes/Room.unity
     guid: 8c0d7372c841e0a4e8f6aaab28b234f6
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 5c98117485124b848ba551d3412fad1e, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 204d79070e35fe4489eb55136cf36ced, type: 2}

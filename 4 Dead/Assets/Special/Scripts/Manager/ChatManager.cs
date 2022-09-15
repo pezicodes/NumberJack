@@ -11,10 +11,11 @@ using Photon.Realtime;
 
 public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
 {
-    [SerializeField] Text chatView_TEXT;
-    [SerializeField] InputField chatView_INPUT;
-    [SerializeField] Button send_BTN;
+    public Text chatView_TEXT;
+    public Text chatView_INPUT;
     public PhotonView pv_Chat;
+
+    public static ChatManager InstanceChat;
 
     #region Private variable
     private string playerName;
@@ -26,6 +27,8 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
     #region LifeCycle
     private void Start()
     {
+
+        InstanceChat = this;
         scrollRect = GameObject.FindObjectOfType<ScrollRect>();
         Application.runInBackground = true;
         // 앱이 백그라운드 상태일 때 실행되도록 설정처리
@@ -45,8 +48,7 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
     private void Update()
     {
         chatClient.Service();
-        // Service()는 꼭 Update에 실행주어야 Chat기능을 사용할 수 있다.
-        OnClick_Send();
+ 
     }
     #endregion
 
@@ -69,10 +71,7 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
         }
     }
 
-    /// <summary>
-    /// 채팅에 보낼 내용을 입력 처리
-    /// </summary>
-    /// <param name="_inputTEXT"></param>
+    
     public void SendChat(string _inputTEXT) 
     {
         if (string.IsNullOrEmpty(_inputTEXT))
@@ -87,38 +86,33 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
         }
     }
 
-    /// <summary>
-    /// SendChat에 입력한 내용을 전송 후 input을 공란으로 초기화 처리
-    /// </summary>
-    public void SendMessage()
-    {
-        SendChat(chatView_INPUT.text);
-        chatView_INPUT.text = "";
-    }   
+        public void SendMessage()
+        {
+            SendChat(chatView_INPUT.text);
+            chatView_INPUT.text = "";
+        }   
 
-    public void OnClick_Send()
-    {
-        send_BTN.onClick.AddListener(SendMessage);
-    }
+ 
+
     #endregion
 
     #region Pun Method
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=yellow>" + newPlayer.NickName + "You have participated.</color>");
+       // pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=yellow>" + newPlayer.NickName + "You have participated.</color>");
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=red>" + otherPlayer.NickName + "You have left.</color>");
+        //pv_Chat.RPC("PlayerState", RpcTarget.All, "<color=red>" + otherPlayer.NickName + "You have left.</color>");
     }
 
     public override void OnJoinedRoom()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient) //isMaasterClient
         {
-            pv_Chat.RPC("PlayerState", RpcTarget.All, 
-            "<color=green>Wardrobe[" + PhotonNetwork.NickName + "]You have participated.</color>");
+            //pv_Chat.RPC("PlayerState", RpcTarget.All, 
+            //"<color=green>Wardrobe[" + PhotonNetwork.NickName + "]You have participated.</color>");
 
             
         }
@@ -133,7 +127,7 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
     [PunRPC]
     private void PlayerState(string message)
     {
-        chatView_TEXT.text = message;   
+       // chatView_TEXT.text = message;   
     }
     #endregion
 
@@ -145,7 +139,7 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
 
     public void OnDisconnected()
     {
-
+        chatView_TEXT.text = "";
     }
 
     public void OnChatStateChange(ChatState state)
@@ -153,14 +147,14 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
         Debug.Log("OnChatState : " + state);
     }
 
-    public void OnSubscribed(string[] channels, bool[] results)
+    public void OnSubscribed(string[] channels, bool[] results) 
     {
-        AddLine(string.Format("Channel ({0}) connection", string.Join(",", channels)));
+      //  AddLine(string.Format("Channel ({0}) connection", string.Join(",", channels)));
     }
 
     public void OnUnsubscribed(string[] channels)
     {
-        AddLine(string.Format("Channel {0} connection termination", string.Join(",", channels)));
+      //  AddLine(string.Format("Channel {0} connection termination", string.Join(",", channels)));
     }
 
     public void DebugReturn(DebugLevel level, string message)
@@ -185,9 +179,38 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
         {
             for (int i = 0; i < messages.Length; i++)
             {
-                AddLine(string.Format("[{0}] : {1}", senders[i], messages[i].ToString()));
+                AddLine(string.Format("[{0}]:{1}", senders[i], messages[i].ToString()));
             }
         }
+
+
+        if (PhotonNetwork.IsMasterClient == false)
+        {
+            MultiplayerManager.multiPlay.Pezi_NumberJack_Console = chatView_TEXT.text.Split("\n");
+
+            // entry =  [Aniki]:5678-0d-0w
+            string[] div1 = MultiplayerManager.multiPlay.Pezi_NumberJack_Console[MultiplayerManager.multiPlay.MessageInt].Split(":");
+            // result = [Aniki], 5678-0d-0w
+
+            // entry =  5678-0d-0w
+            string[] div2 = div1[0].Split("-");
+            // result = 5678, 0d, 0w
+
+            GameObject OtherPlayerGuess = Instantiate(MultiplayerManager.multiPlay.GuessChatObject, MultiplayerManager.multiPlay.OtherPlayerHistory);
+            Text[] OtherPlayerTexts = OtherPlayerGuess.GetComponentsInChildren<Text>();
+            OtherPlayerTexts[0].text = div2[0];
+            OtherPlayerTexts[1].text = div2[1];
+            OtherPlayerTexts[2].text = div2[2];
+
+            MultiplayerManager.multiPlay.MessageInt++;
+        }
+
+        else if (PhotonNetwork.IsMasterClient == true)
+        {
+            MultiplayerManager.multiPlay.MessageInt++;
+        }
+
+
     }
     #endregion
     public void OnPrivateMessage(string sender, object message, string channelName)

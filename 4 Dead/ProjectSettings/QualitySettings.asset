@@ -188,7 +188,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Ultra
-    pixelLightCount: 15
+    pixelLightCount: 5
     shadows: 0
     shadowResolution: 0
     shadowProjection: 1
@@ -200,7 +200,7 @@ QualitySettings:
     shadowmaskMode: 1
     skinWeights: 4
     textureQuality: 0
-    anisotropicTextures: 2
+    anisotropicTextures: 0
     antiAliasing: 8
     softParticles: 0
     softVegetation: 1
@@ -209,7 +209,7 @@ QualitySettings:
     vSyncCount: 0
     lodBias: 2
     maximumLODLevel: 0
-    streamingMipmapsActive: 0
+    streamingMipmapsActive: 1
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 512
     streamingMipmapsRenderersPerFrame: 512
