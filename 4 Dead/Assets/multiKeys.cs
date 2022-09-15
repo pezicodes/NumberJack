@@ -1,4 +1,4 @@
-  using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,8 +24,7 @@ public class multiKeys : MonoBehaviour
     {
         spacebox.text = spacebox.text + text.text;
 
-        //MultiplayerManager.multiPlay.decipher();
-        MultiplayerAddNumber.multiplayerNumber.decipher();
+        MultiplayerManager.multiPlay.decipher();
 
         cv.interactable = false;
         if (cv.interactable == false)
