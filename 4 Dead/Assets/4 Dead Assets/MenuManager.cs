@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class MenuManager : MonoBehaviour
 {
@@ -113,6 +114,7 @@ public class MenuManager : MonoBehaviour
     {
 
         _GameModesHolder.SetActive(false);
+        PhotonNetwork.JoinLobby();
         LoadingScreen.SetActive(true);
     }
 
