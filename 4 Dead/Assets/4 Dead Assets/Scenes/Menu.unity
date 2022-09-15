@@ -1670,7 +1670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -674}
+  m_AnchoredPosition: {x: 0, y: -821.28143}
   m_SizeDelta: {x: 1736.9, y: 850.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305870282
@@ -2806,7 +2806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -867.6}
+  m_AnchoredPosition: {x: 0, y: -867.60156}
   m_SizeDelta: {x: 0, y: 1453.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &444447491
@@ -3719,13 +3719,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 1
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 2160, y: 1080}
+  m_ScaleFactor: 0.19
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
+  m_MatchWidthOrHeight: 0.4
+  m_PhysicalUnit: 0
+  m_FallbackScreenDPI: -387.4
+  m_DefaultSpriteDPI: 726.9
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
 --- !u!223 &575519123
@@ -4349,7 +4349,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1748794659}
   - {fileID: 920108156}
@@ -4358,7 +4358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 611}
+  m_AnchoredPosition: {x: 0, y: 505}
   m_SizeDelta: {x: 1736.9, y: 850.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611087823
@@ -4409,7 +4409,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Searching for Rooms . .
+  m_Text: Joining Open Room..
 --- !u!222 &611087825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6808,8 +6808,8 @@ RectTransform:
   m_GameObject: {fileID: 895590242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1040036277}
   m_Father: {fileID: 1959526630}
@@ -6817,7 +6817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1505.2}
+  m_AnchoredPosition: {x: 0, y: 1604}
   m_SizeDelta: {x: 2160, y: 1114.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &895590244
@@ -12631,7 +12631,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BackGroundColor: {r: 0.627451, g: 0.83137256, b: 0.88235295, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -12656,7 +12656,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 0
+  m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 1
@@ -21498,7 +21498,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -348.71866}
+  m_AnchoredPosition: {x: 0, y: -496}
   m_SizeDelta: {x: 307.6, y: 185.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1576023348
@@ -22528,7 +22528,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668047219}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -29399,7 +29399,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -19.804688}
+  m_AnchoredPosition: {x: 0, y: -19.805176}
   m_SizeDelta: {x: 2160, y: -851.19104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1942350712
