@@ -25,7 +25,7 @@ public class RoomManager : ServerManager
     [SerializeField] Text playerCount_TEXT;
     [SerializeField] Text Instructions;
     [SerializeField] CanvasGroup readyButton;
-    [SerializeField] RoomUI roomUI;
+    
 
     public static RoomManager InstanceRoomManager;  
 
@@ -34,10 +34,7 @@ public class RoomManager : ServerManager
     #endregion
 
     #region LifeCycle
-    private void Awake()
-    {
-        roomUI = GameObject.FindObjectOfType<RoomUI>();
-    }
+    
     private void Start()
     {   
         InstanceRoomManager = this;
@@ -78,6 +75,7 @@ public class RoomManager : ServerManager
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         UpdatePlayerCount();
+  
         
     }
   
@@ -91,13 +89,16 @@ public class RoomManager : ServerManager
  
             Text textname = obj.GetComponentInChildren<Text>();
 
-            if(textname.text != PlayerPrefs.GetString(PhotonNetwork.LocalPlayer.NickName)){
-                Debug.Log(textname.text);
+            if (!(textname.text.Contains(" (you)")))
+            {
+                Debug.Log(textname.text + "TEXT");
+                Debug.Log(PlayerPrefs.GetString("Username") + "PLAYERPREFS");
+                Debug.LogWarning("Deleted PlayerAvatarName");
                 Destroy(obj.gameObject);
 
-                Debug.LogWarning("Deleted PlayerAvatarName");
+               
+                
             }
- 
         }
     }
     #endregion
@@ -161,6 +162,13 @@ public class RoomManager : ServerManager
         RoomContent.SetActive(false);
         PlayerNumber.SetActive(true);
 
+        print(EnterNameSpot.hierarchyCount);
+
+        if(EnterNameSpot.hierarchyCount > 289)
+        {
+            return;
+        }
+        
         GameObject PlayerAvatarName = Instantiate(this.PlayerAvatarName, EnterNameSpot);
         Text[] Nametexts = PlayerAvatarName.GetComponentsInChildren<Text>();
         Nametexts[0].text = PlayerPrefs.GetString("Username");
@@ -168,6 +176,7 @@ public class RoomManager : ServerManager
     }
 
     public void Menu(){
+        PhotonNetwork.LeaveLobby();
         AppManager.Instance.ChangeScene(AppManager.eSceneState.Menu);
     }
 
