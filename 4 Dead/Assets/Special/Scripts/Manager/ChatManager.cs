@@ -33,7 +33,7 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
         Application.runInBackground = true;
         // 앱이 백그라운드 상태일 때 실행되도록 설정처리
 
-        playerName = PlayerPrefs.GetString("User_Name");
+        playerName = PlayerPrefs.GetString("Username");
         // PlayerPrefs에 저장한 User_Name의 Key의 value값을 가져온다
 
         cur_chatChannel = "001";
@@ -178,17 +178,13 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
         if (channelName.Equals(cur_chatChannel))
         {
             for (int i = 0; i < messages.Length; i++)
-            {
-                
-                AddLine(string.Format("[{0}]:{1}", senders[i], messages[i].ToString()));
+            { 
+                AddLine(string.Format("{0}:{1}", senders[i], messages[i].ToString()));
 
-                Debug.LogWarning("It's Working");
-
-                if (!(senders[i].Contains(PhotonNetwork.LocalPlayer.NickName)))
+                if (senders[i] != PhotonNetwork.LocalPlayer.NickName)
                 {
-
-                    #region RELAYING PLAYER'S CHATS IN NUMBE JACK FORMAT
-                    // entry =  [Aniki]:5678-0d-0w
+                    #region RELAYING PLAYER'S CHATS IN NUMBER JACK FORMAT
+                    // entry =  Aniki:5678-0d-0w
 
                     // result = [Aniki], 5678-0d-0w
 
@@ -202,14 +198,17 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
                     OtherPlayerTexts[1].text = div[1];
                     OtherPlayerTexts[2].text = div[2];
 
-                    #endregion
+                    #endregion 
+                }
 
-                    MultiplayerManager.multiPlay.MessageInt++;
+                else
+                {
+                    return;
                 }
             }
 
+           
 
-            
 
         }
 
