@@ -179,37 +179,39 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
         {
             for (int i = 0; i < messages.Length; i++)
             {
+                
                 AddLine(string.Format("[{0}]:{1}", senders[i], messages[i].ToString()));
+
+                Debug.LogWarning("It's Working");
+
+                if (!(senders[i].Contains(PhotonNetwork.LocalPlayer.NickName)))
+                {
+
+                    #region RELAYING PLAYER'S CHATS IN NUMBE JACK FORMAT
+                    // entry =  [Aniki]:5678-0d-0w
+
+                    // result = [Aniki], 5678-0d-0w
+
+                    // entry =  5678-0d-0w
+                    string[] div = messages[i].ToString().Split("-");
+                    // result = 5678, 0d, 0w
+
+                    GameObject OtherPlayerGuess = Instantiate(MultiplayerManager.multiPlay.GuessChatObject, MultiplayerManager.multiPlay.OtherPlayerHistory);
+                    Text[] OtherPlayerTexts = OtherPlayerGuess.GetComponentsInChildren<Text>();
+                    OtherPlayerTexts[0].text = div[0];
+                    OtherPlayerTexts[1].text = div[1];
+                    OtherPlayerTexts[2].text = div[2];
+
+                    #endregion
+
+                    MultiplayerManager.multiPlay.MessageInt++;
+                }
             }
+
+
+            
+
         }
-
-
-        if (PhotonNetwork.IsMasterClient == false)
-        {
-            MultiplayerManager.multiPlay.Pezi_NumberJack_Console = chatView_TEXT.text.Split("\n");
-
-            // entry =  [Aniki]:5678-0d-0w
-            string[] div1 = MultiplayerManager.multiPlay.Pezi_NumberJack_Console[MultiplayerManager.multiPlay.MessageInt].Split(":");
-            // result = [Aniki], 5678-0d-0w
-
-            // entry =  5678-0d-0w
-            string[] div2 = div1[0].Split("-");
-            // result = 5678, 0d, 0w
-
-            GameObject OtherPlayerGuess = Instantiate(MultiplayerManager.multiPlay.GuessChatObject, MultiplayerManager.multiPlay.OtherPlayerHistory);
-            Text[] OtherPlayerTexts = OtherPlayerGuess.GetComponentsInChildren<Text>();
-            OtherPlayerTexts[0].text = div2[0];
-            OtherPlayerTexts[1].text = div2[1];
-            OtherPlayerTexts[2].text = div2[2];
-
-            MultiplayerManager.multiPlay.MessageInt++;
-        }
-
-        else if (PhotonNetwork.IsMasterClient == true)
-        {
-            MultiplayerManager.multiPlay.MessageInt++;
-        }
-
 
     }
     #endregion
@@ -222,6 +224,7 @@ public class ChatManager : MonoBehaviourPunCallbacks, IChatClientListener
     {
         throw new System.NotImplementedException();
     }
+
     public void OnUserSubscribed(string channel, string user)
     {
         throw new System.NotImplementedException();
