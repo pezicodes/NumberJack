@@ -54,7 +54,7 @@ public class RoomManager : ServerManager
     {
         Debug.Log(PhotonNetwork.CurrentRoom.Name + "Successful room entry");
         PhotonNetwork.AutomaticallySyncScene = true;
-        nick_name = PlayerPrefs.GetString("User_Name");
+        nick_name = PlayerPrefs.GetString("Username");
 
         Hashtable infoHT = PhotonNetwork.CurrentRoom.CustomProperties;
         if (PhotonNetwork.IsMasterClient)
