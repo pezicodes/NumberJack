@@ -32,7 +32,7 @@ public class AddNumberManager : MonoBehaviourPunCallbacks, IChatClientListener
         Application.runInBackground = true;
         // 앱이 백그라운드 상태일 때 실행되도록 설정처리
 
-        playerName = PlayerPrefs.GetString("User_Name");
+        playerName = PlayerPrefs.GetString("Username");
         // PlayerPrefs에 저장한 User_Name의 Key의 value값을 가져온다
 
         cur_chatChannel = "002";
