@@ -153,8 +153,8 @@ public class LobbyUI : MonoBehaviour
     {
         lobbyManager.Create(roomName_INPUT.text, nickName_INPUT.text, playerCounter_SLIDER.value);
         PhotonNetwork.NickName = nickName_INPUT.text;
-        PlayerPrefs.SetString("User_Name", PhotonNetwork.NickName);
-        Debug.Log(PlayerPrefs.HasKey("User_Name"));
+        PlayerPrefs.SetString("Username", PhotonNetwork.NickName);
+        Debug.Log(PlayerPrefs.HasKey("Username"));
     }
 
     /// <summary>
@@ -165,7 +165,7 @@ public class LobbyUI : MonoBehaviour
         _roominfo = lobbyManager.roomInfo;
         string room_Name = (string)_roominfo.CustomProperties["RoomName"];
         PhotonNetwork.NickName = enterNickName_INPUT.text;
-        PlayerPrefs.SetString("User_Name", PhotonNetwork.NickName);
+        PlayerPrefs.SetString("Username", PhotonNetwork.NickName);
         PhotonNetwork.JoinRoom(room_Name);
         AppManager.Instance.ChangeScene(AppManager.eSceneState.Room);
     }
