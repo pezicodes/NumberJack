@@ -73,22 +73,7 @@ public class MultiplayerManager : MonoBehaviour
         D = 0;
         W = 0;
 
-        #region Opponent's Number Creation
-        OppNum.Add("0");
-        OppNum.Add("1");
-        OppNum.Add("2");
-        OppNum.Add("3");
-        OppNum.Add("4");
-        OppNum.Add("5");
-        OppNum.Add("6");
-        OppNum.Add("7");
-        OppNum.Add("8");
-        OppNum.Add("9");
-
         
-        #endregion
-
-        generateNumber();
     }
 
     public void Restart()
@@ -107,6 +92,7 @@ public class MultiplayerManager : MonoBehaviour
     public string[] Pezi_NumberJack_Console;
     public int MessageInt = 0;
     public string ChatText;
+    public string test;
 
     void checkDeadandWounded()
     {
@@ -201,19 +187,31 @@ public class MultiplayerManager : MonoBehaviour
         ChatManager.InstanceChat.SendChat(ChatManager.InstanceChat.chatView_INPUT.text + "-" + D.ToString() + "d" + "-" + W.ToString() + "w");
         ChatText = ChatManager.InstanceChat.chatView_TEXT.text;
 
-        string test = ChatManager.InstanceChat.chatView_INPUT.text + D.ToString() + "d" + "-" + W.ToString() + "w";
+        test += "Test:" + myEntries + "-" + D.ToString() + "d" + "-" + W.ToString() + "w" + "\n";
+        Debug.LogWarning(test);
+        
         //DOUBLE UPDATE
 
         //String Formatting
-        Pezi_NumberJack_Console = test.Split("\n");
+        if (test.Contains("\n"))
+        {
+            Pezi_NumberJack_Console = test.Split("\n");
+        }
 
-        // entry =  [Aniki]:5678-0d-0w
+        else
+        {
+            Pezi_NumberJack_Console[MessageInt] = test;
+        }
+        
+
+       /* // entry =  [Aniki]:5678-0d-0w
         string[] div1 = Pezi_NumberJack_Console[MessageInt].Split(":");
+        Debug.LogWarning(Pezi_NumberJack_Console[MessageInt]);
         // result = [Aniki], 5678-0d-0w
 
         // entry =  5678-0d-0w
-        string[] div2 = div1[0].Split("-");
-        // result = 5678, 0d, 0w
+        string[] div2 = div1[1].Split("-");
+        // result = 5678, 0d, 0w*/
 
 
         /*GameObject OtherPlayerGuess = Instantiate(GuessChatObject, OtherPlayerHistory);
@@ -235,8 +233,7 @@ public class MultiplayerManager : MonoBehaviour
         clear.codeClear.cleraAll();
         clearMemory();
 
-        //Add 1 to Message Counter
-        
+      
 
 
     }
@@ -244,8 +241,9 @@ public class MultiplayerManager : MonoBehaviour
     public void generateNumber()
     {
         //yield return Opptextbox;
-        Opptextbox = "";
-
+        Opptextbox = PlayerPrefs.GetString("PLAYER_NUM");
+        Debug.Log("PlayerNumber = " + Opptextbox);
+/*      
         for (int i = 0; i < 4; i++)
         {
             int rush = UnityEngine.Random.Range(0, OppNum.Count);
@@ -256,8 +254,8 @@ public class MultiplayerManager : MonoBehaviour
 
             print(Opptextbox);
 
-        }
-            
+        }*/
+
         Opptextbox.ToArray();
                
         winscreenText();
