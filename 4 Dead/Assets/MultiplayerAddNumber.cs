@@ -8,20 +8,27 @@ using UnityEngine.SceneManagement;
 public class MultiplayerAddNumber : MonoBehaviour
 {
     #region Main Game Play Variables 
-    
+
     public static MultiplayerAddNumber multiplayerNumber;
 
     public Text Mytextbox;
     public Button StartBtn;
     string myEntries;
-    
-    
+
+    public GameObject _gameplay;
+    public GameObject _room;
+
+
+
     #endregion
 
     #region GameManager's Methods
     public void Start()
     {
         multiplayerNumber = this;
+
+        
+
         ColorUtility.TryParseHtmlString
         ("#9DD300", out greenColor);
 
@@ -53,30 +60,7 @@ public class MultiplayerAddNumber : MonoBehaviour
 
         #endregion
 
-    }
-
-    // public void Send_Play()
-    // {   
-    //     myEntries = Mytextbox.text;
-    //     myEntries.ToArray();
-    //     OppEntries = Opptextbox;
-    //     OppEntries.ToArray();
-
-    //     // Me(player1)
-    //     first_my = myEntries[0];
-    //     second_my = myEntries[1];
-    //     third_my = myEntries[2];
-    //     fourth_my = myEntries[3];
-
-    //     // Opponent
-    //     first_opp = OppEntries[0];
-    //     second_opp = OppEntries[1];
-    //     third_opp = OppEntries[2];
-    //     fourth_opp = OppEntries[3];
-    //     #endregion
-    //     checkDeadandWounded();
-
-    // }
+    } 
 
     #region Select Tool
     //CHEAT
@@ -114,4 +98,11 @@ public class MultiplayerAddNumber : MonoBehaviour
 
     }
     #endregion  
+
+    public void Send()
+    {
+        AddNumberManager.InstanceAddNumber.SendChat(AddNumberManager.InstanceAddNumber.chatView_INPUT.text);
+        _gameplay.SetActive(true);
+        _room.SetActive(false);
+    }
 }
