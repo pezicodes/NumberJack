@@ -90,7 +90,7 @@ public class MultiplayerManager : MonoBehaviour
 
     [TextArea]
     public string[] Pezi_NumberJack_Console;
-    public int MessageInt = 0;
+    
     public string ChatText;
     public string test;
 
@@ -182,10 +182,12 @@ public class MultiplayerManager : MonoBehaviour
 
         //Local Relay
 
-        
+
         //Server Relay
-        ChatManager.InstanceChat.SendChat(ChatManager.InstanceChat.chatView_INPUT.text + "-" + D.ToString() + "d" + "-" + W.ToString() + "w");
-        ChatText = ChatManager.InstanceChat.chatView_TEXT.text;
+        //ChatText = ChatManager.InstanceChat.chatView_TEXT.text;
+        ChatManager.InstanceChat.SendChat
+            (myEntries + "-" + D.ToString() + "d" + "-" + W.ToString() + "w");
+        
 
         test += "Test:" + myEntries + "-" + D.ToString() + "d" + "-" + W.ToString() + "w" + "\n";
         Debug.LogWarning(test);
@@ -193,32 +195,7 @@ public class MultiplayerManager : MonoBehaviour
         //DOUBLE UPDATE
 
         //String Formatting
-        if (test.Contains("\n"))
-        {
-            Pezi_NumberJack_Console = test.Split("\n");
-        }
-
-        else
-        {
-            Pezi_NumberJack_Console[MessageInt] = test;
-        }
-        
-
-       /* // entry =  [Aniki]:5678-0d-0w
-        string[] div1 = Pezi_NumberJack_Console[MessageInt].Split(":");
-        Debug.LogWarning(Pezi_NumberJack_Console[MessageInt]);
-        // result = [Aniki], 5678-0d-0w
-
-        // entry =  5678-0d-0w
-        string[] div2 = div1[1].Split("-");
-        // result = 5678, 0d, 0w*/
-
-
-        /*GameObject OtherPlayerGuess = Instantiate(GuessChatObject, OtherPlayerHistory);
-        Text[] OtherPlayerTexts = OtherPlayerGuess.GetComponentsInChildren<Text>();
-        OtherPlayerTexts[0].text = div2[0];
-        OtherPlayerTexts[1].text = div2[1];
-        OtherPlayerTexts[2].text = div2[2];*/
+        Pezi_NumberJack_Console = test.Split("\n");
 
         GameObject LocalPlayerGuess = Instantiate(GuessChatObject, LocalPlayerHistory);
         Text[] LocalPlayerTexts = LocalPlayerGuess.GetComponentsInChildren<Text>();
@@ -230,11 +207,9 @@ public class MultiplayerManager : MonoBehaviour
 
         //Clearing Local and Server Prefs
         ChatManager.InstanceChat.chatView_INPUT.text = "";
+        ChatText = "";
         clear.codeClear.cleraAll();
         clearMemory();
-
-      
-
 
     }
 
@@ -243,19 +218,6 @@ public class MultiplayerManager : MonoBehaviour
         //yield return Opptextbox;
         Opptextbox = PlayerPrefs.GetString("PLAYER_NUM");
         Debug.Log("PlayerNumber = " + Opptextbox);
-/*      
-        for (int i = 0; i < 4; i++)
-        {
-            int rush = UnityEngine.Random.Range(0, OppNum.Count);
-
-            Opptextbox = Opptextbox + OppNum.ElementAt(rush);
-
-            OppNum.RemoveAt(rush);
-
-            print(Opptextbox);
-
-        }*/
-
         Opptextbox.ToArray();
                
         winscreenText();
@@ -284,7 +246,7 @@ public class MultiplayerManager : MonoBehaviour
     {
         #region ChatManager Branch
 
-        ChatText = ChatManager.InstanceChat.chatView_TEXT.text;
+        /*ChatText = ChatManager.InstanceChat.chatView_TEXT.text;*/
         //DOUBLE UPDATE
 
         #endregion
