@@ -30,20 +30,20 @@ public class Timer : MonoBehaviour
         if(minuteCount >= 0 && minuteCount < 4){
             Gold.SetActive(true);
             Silver.SetActive(false); 
-            QuickJackGameManager.quickjackscript.WinMedal = true;
+            ///QuickJackGameManager.quickjackscript.WinMedal = true;
         }
 
         else if(minuteCount >= 4 && minuteCount < 8){
 
             Gold.SetActive(false);
             Silver.SetActive(true); 
-            QuickJackGameManager.quickjackscript.WinMedal = true;
+            //QuickJackGameManager.quickjackscript.WinMedal = true;
         }
 
         else{
             Gold.SetActive(false);
             Silver.SetActive(false); 
-            QuickJackGameManager.quickjackscript.WinMedal = true;
+            //QuickJackGameManager.quickjackscript.WinMedal = true;
         }
         
     }
