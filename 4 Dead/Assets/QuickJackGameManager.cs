@@ -2,12 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+
 //pezicodes
 
 public class QuickJackGameManager : MonoBehaviour
 {
     #region Main Game Play Variables 
-    
+
     public Timer timerscript;
     public CanvasGroup PlayButton;
     List<string> Results = new List<string>();
@@ -36,18 +37,18 @@ public class QuickJackGameManager : MonoBehaviour
     public Text[] playerCoins, playerGems;
     public int playerCoinsCount, playerGemsCount;
     public int movesint;
-    
+
 
     #endregion
 
-    void CoinGemUpdates(){
-        
+    void CoinGemUpdates() {
+
         playerCoinsCount = PlayerPrefs.GetInt("PCOINS");
         for (int i = 0; i < playerCoins.Length; i++)
         {
             playerCoins[i].text = playerCoinsCount.ToString();
         }
-       
+
 
         playerGemsCount = PlayerPrefs.GetInt("PGEMS");
         for (int i = 0; i < playerGems.Length; i++)
@@ -58,32 +59,32 @@ public class QuickJackGameManager : MonoBehaviour
 
     #region GameManager's Methods
     public void Start()
-    {    
-        
+    {
+
         NumbersandButtons.SetActive(true);
         Forward.SetActive(false);
         coinsplash.SetActive(true);
         gemsplash.SetActive(true);
 
-        quickjackscript = this;       
+        quickjackscript = this;
         movesint = 0;
-        
+
         for (int i = 0; i < Mytextbox.Length; i++) {
             trialresults[i].text = "";
             deadresults[i].text = "";
             woundedresults[i].text = "";
             Mytextbox[i].text = "";
         }
-        
-        
+
+
         myEntries = Mytextbox[movesint].text;
         myEntries.ToArray();
 
-       
-        
+
+
         VICTORY.SetActive(false);
         FAILED.SetActive(false);
-        
+
         D = 0;
         W = 0;
 
@@ -100,11 +101,11 @@ public class QuickJackGameManager : MonoBehaviour
         OppNum.Add("7");
         OppNum.Add("8");
         OppNum.Add("9");
-        
+
         #endregion
 
         generateNumber();
-       
+
     }
 
     void checkDeadandWounded()
@@ -190,48 +191,48 @@ public class QuickJackGameManager : MonoBehaviour
                 W = W + 1;
             }
         }
-        
-            
-        if(trialresults[movesint].text == ""){
+
+
+        if (trialresults[movesint].text == "") {
             trialresults[movesint].text = myEntries;
             deadresults[movesint].text = D.ToString();
             woundedresults[movesint].text = W.ToString();
             movesint++;
         }
-        
+
         //Win
-        for (int i = 0; i < deadresults.Length; i++){
+        for (int i = 0; i < deadresults.Length; i++) {
 
             if (deadresults[i].text.Contains("4"))
             {
-            
-           // PlayerPrefs.SetString("Time", timerText.text);
-          
-            
-            Invoke("Win", 0.25f);
 
-            timerscript.enabled = false;
-           
-            
+                // PlayerPrefs.SetString("Time", timerText.text);
+
+
+                Invoke("Win", 0.25f);
+
+                timerscript.enabled = false;
+
+
             }
 
         }
-        
+
         //LOSE
-        if(movesint >= 5 && timerscript.enabled == true){
+        if (movesint >= 5 && timerscript.enabled == true) {
             timerscript.enabled = false;
-            
+
             winpractice_time.text = PlayerPrefs.GetString("Time");
             Invoke("Lose", 0.5f);
 
 
-        } 
+        }
         clear.codeClear.cleraAll();
         clearMemory();
         CoinGemUpdates();
 
     }
-  
+
     public void generateNumber()
     {
         //yield return Opptextbox;
@@ -239,7 +240,7 @@ public class QuickJackGameManager : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            int rush = Random.Range(0, OppNum.Count);
+            int rush = UnityEngine.Random.Range(0, OppNum.Count);
 
             Opptextbox = Opptextbox + OppNum.ElementAt(rush);
 
@@ -247,55 +248,55 @@ public class QuickJackGameManager : MonoBehaviour
 
             print(Opptextbox);
 
-         
+
         }
-            
+
         Opptextbox.ToArray();
-        
+
         //winscreenText();
         //losescreenText();
 
 
     }
 
-    public void ViewHistory(){
+    public void ViewHistory() {
         GAMEPLAY.SetActive(true);
         FAILED.SetActive(false);
     }
 
-    public void ExitHistory(){
+    public void ExitHistory() {
         GAMEPLAY.SetActive(false);
         FAILED.SetActive(true);
     }
 
     public void clearMemory()
-    {   
-        
-        if(movesint < 5){
-        Mytextbox[movesint].text = "";
+    {
+
+        if (movesint < 5) {
+            Mytextbox[movesint].text = "";
         }
-        
+
         result = "";
         //displayResult.text = "";
         Results.Clear();
-        
+
 
         D = 0;
         W = 0;
     }
-    
+
     void Win()
-    {   
+    {
         GAMEPLAY.SetActive(false);
         VICTORY.SetActive(true);
 
         winscreenText();
 
         Invoke("OffParticles", 5f);
-         
+
     }
 
-    void OffParticles(){
+    void OffParticles() {
         coinsplash.SetActive(false);
         gemsplash.SetActive(false);
     }
@@ -310,43 +311,43 @@ public class QuickJackGameManager : MonoBehaviour
 
         losescreenText();
 
-        
+
     }
- 
+
     private void Update()
     {
-        
+
         #region Time Formatting
-        if((int)timerscript.secondsCount < 10){
-            timerText.text = 
-        (timerscript.minuteCount +":"+"0"+(int)timerscript.secondsCount).ToString();
+        if ((int)timerscript.secondsCount < 10) {
+            timerText.text =
+        (timerscript.minuteCount + ":" + "0" + (int)timerscript.secondsCount).ToString();
         }
 
-        else{
-            timerText.text = 
-        (timerscript.minuteCount +":"+ (int)timerscript.secondsCount)
-        .ToString(); 
+        else {
+            timerText.text =
+        (timerscript.minuteCount + ":" + (int)timerscript.secondsCount)
+        .ToString();
         }
         #endregion
-        
-        if(movesint < 5){
+
+        if (movesint < 5) {
             //Check input before play
             if (Mytextbox[movesint].text.Length > 3)
             {
-            PlayButton.interactable = true;
+                PlayButton.interactable = true;
             }
 
-            else{
-            PlayButton.interactable = false;
+            else {
+                PlayButton.interactable = false;
             }
-       }
+        }
 
         PlayerPrefs.SetString("Time", timerText.text);
-        
+
     }
-    
+
     public void Send_Play()
-    {   
+    {
         #region Setting Entries
         myEntries = Mytextbox[movesint].text;
         myEntries.ToArray();
@@ -370,8 +371,8 @@ public class QuickJackGameManager : MonoBehaviour
     }
 
     #endregion
-    public Color jack; 
-    public Color jackwounded; 
+    public Color jack;
+    public Color jackwounded;
 
     #region Win Screen Function
     [Space]
@@ -385,7 +386,7 @@ public class QuickJackGameManager : MonoBehaviour
     public GameObject[] Medals;
 
     public bool WinMedal = true;
-    public void winscreenText(){
+    public void winscreenText() {
 
         myEntries = Opptextbox;
         myEntries.ToArray();
@@ -408,14 +409,14 @@ public class QuickJackGameManager : MonoBehaviour
         #endregion
 
         rewards[x].text = coinreward;
-        rewards[x+1].text = gemreward;
+        rewards[x + 1].text = gemreward;
 
         int coins = int.Parse(coinreward);
         int gems = int.Parse(gemreward);
 
-        if(timerscript.minuteCount >= 0 && timerscript.minuteCount < 4){
+        if (timerscript.minuteCount >= 0 && timerscript.minuteCount < 4) {
             extrarewards[x].text = GOLDcoinreward;
-            extrarewards[x+1].text = GOLDgemreward;
+            extrarewards[x + 1].text = GOLDgemreward;
             Medals[x].SetActive(true);
 
             int totalGoldCoins = coins + int.Parse(GOLDcoinreward) + PlayerPrefs.GetInt("PCOINS");
@@ -423,42 +424,42 @@ public class QuickJackGameManager : MonoBehaviour
 
             PlayerPrefs.SetInt("PCOINS", totalGoldCoins);
             PlayerPrefs.SetInt("PGEMS", totalGoldGems);
-            
+
         }
 
-        else if(timerscript.minuteCount >= 4 && timerscript.minuteCount < 8){
+        else if (timerscript.minuteCount >= 4 && timerscript.minuteCount < 8) {
             extrarewards[x].text = SILVERcoinreward;
-            extrarewards[x+1].text = SILVERgemreward;
-            Medals[x+1].SetActive(true);
-            
+            extrarewards[x + 1].text = SILVERgemreward;
+            Medals[x + 1].SetActive(true);
+
             int totalSilverCoins = coins + int.Parse(SILVERcoinreward) + PlayerPrefs.GetInt("PCOINS");
             int totalSilverGems = gems + int.Parse(SILVERgemreward) + PlayerPrefs.GetInt("PGEMS");
 
             PlayerPrefs.SetInt("PCOINS", totalSilverCoins);
             PlayerPrefs.SetInt("PGEMS", totalSilverGems);
-            
-            
+
+
         }
 
-        else{
+        else {
             extrarewards[x].text = "0";
-            extrarewards[x+1].text = "0";
-            Medals[x+2].SetActive(true);
+            extrarewards[x + 1].text = "0";
+            Medals[x + 2].SetActive(true);
 
             int newcoins = coins + PlayerPrefs.GetInt("PCOINS");
             int newgems = gems + PlayerPrefs.GetInt("PGEMS");
 
-            PlayerPrefs.SetInt("PCOINS", newcoins );
+            PlayerPrefs.SetInt("PCOINS", newcoins);
             PlayerPrefs.SetInt("PGEMS", newgems);
-            
+
         }
 
         winpractice_time.text = PlayerPrefs.GetString("Time");
         timerscript.enabled = false;
 
-        
 
-        
+
+
 
     }
 
@@ -470,7 +471,7 @@ public class QuickJackGameManager : MonoBehaviour
     [Header("Lose Screen Function")]
     public Text[] winloseText;
 
-    public void losescreenText(){
+    public void losescreenText() {
 
         myEntries = Opptextbox;
         myEntries.ToArray();
@@ -484,7 +485,8 @@ public class QuickJackGameManager : MonoBehaviour
 
     #endregion
 
-    
-     
+
+
+
 }
 
